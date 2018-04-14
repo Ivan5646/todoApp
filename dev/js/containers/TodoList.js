@@ -6,8 +6,8 @@ class TodoList extends Component {
     createList() {
         return this.props.todoList.map((item) => { 
             return (
-                <li key={todoList.id}> 
-                {todoList.name} {todoList.description} 
+                <li key={item.id}> 
+                {item.name} {item.description} 
                 </li>
                 );
         });
@@ -24,7 +24,7 @@ class TodoList extends Component {
 
 function mapStateToProps(state){ //takes a piece of state which is part of the Store and sends it to the Component as props
     return {
-        todoList: todoList.items
+        todoList: state.todoList //todoList.items
     };
 }
 
