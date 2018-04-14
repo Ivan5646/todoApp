@@ -3,11 +3,29 @@ import {connect} from 'react-redux';
 
 class TodoList extends Component {
 
+    createList() {
+        return this.props.todoList.map((item) => { 
+            return (
+                <li key={todoList.id}> 
+                {todoList.name} {todoList.description} 
+                </li>
+                );
+        });
+    }
+
     render() {
         return (
-            <div>static list</div>
+            <ul>
+                {this.createList()}
+            </ul>
         )
     }
 }
 
-export default connect()(TodoList); // this is now a contanier
+function mapStateToProps(state){ //takes a piece of state which is part of the Store and sends it to the Component as props
+    return {
+        todoList: todoList.items
+    };
+}
+
+export default connect(mapStateToProps)(TodoList); // this is now a contanier
