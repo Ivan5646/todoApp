@@ -9,7 +9,7 @@ class AddTodo extends Component {
         this.state = {
             name: "default name",
             description: "default description",
-            priority: "default priority",
+            priority: "normal",
             due_date: "no due date"
         };
 
@@ -17,6 +17,7 @@ class AddTodo extends Component {
         this.handleDescriptionChange = this.handleDescriptionChange.bind(this);
         this.handlePriorityChange = this.handlePriorityChange.bind(this);
         this.handleDueDateChange = this.handleDueDateChange.bind(this);
+        this.addItem = this.addItem.bind(this);
         this.logOut = this.logOut.bind(this);
     }
 
@@ -59,7 +60,8 @@ class AddTodo extends Component {
                     <label>Due Date</label>
                     <input placeholder="enter the due date of the task..." onChange={this.handleDueDateChange} />
                 </div>
-                <button>Add Task</button>
+                <button type="button">Add Task</button>
+
                 <div>{this.state.name}</div>
                 <div>{this.state.description}</div>
                 <div>{this.state.priority}</div>
