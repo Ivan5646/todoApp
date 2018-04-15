@@ -3,3 +3,30 @@ $primary: #006699;
 h2 {
 	color: $primary;
 }
+
+form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    // align-items: center;
+    width: 80%;
+}
+
+form div {
+    margin-bottom: 10px;
+    // display: flex;
+    // justify-content: space-around;
+}
+
+form input {
+    width: 230px;
+}
+
+form label {
+    margin-right: 10px;
+}
+
+form button {
+    width: 40%;
+    // margin: 0 auto;
+}

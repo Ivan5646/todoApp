@@ -7,24 +7,26 @@ class AddTodo extends Component {
         render() {
         return (
             <form>
-            <div> 
-                <label>Name</label>
-                <input placeholder="enter the name of the task..." />
-            </div>
-            <div> 
-                <label>Description</label>
-                <input placeholder="enter task description..." />
-            </div>
-            <select name="priority" >
-                <option value="normal">normal</option>
-                <option value="sahighab">high</option>
-                <option value="urgent">urgent</option>
-            </select>
-            <div> 
-                <label>Due Date</label>
-                <input placeholder="enter the due date of the task..." />
-            </div>
-            <button>Add Task</button>
+                <div> 
+                    <label>Name</label>
+                    <input placeholder="enter the name of the task..." />
+                </div>
+                <div> 
+                    <label>Description</label>
+                    <input placeholder="enter task description..." />
+                </div>
+                <div> 
+                    <select name="priority" >
+                        <option value="normal">normal</option>
+                        <option value="sahighab">high</option>
+                        <option value="urgent">urgent</option>
+                    </select>
+                </div>
+                <div> 
+                    <label>Due Date</label>
+                    <input placeholder="enter the due date of the task..." />
+                </div>
+                <button>Add Task</button>
             </form>
         )
     }
