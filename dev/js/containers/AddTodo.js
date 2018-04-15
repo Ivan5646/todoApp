@@ -52,7 +52,7 @@ class AddTodo extends Component {
                 <div> 
                     <select name="priority" onChange={this.handlePriorityChange}>
                         <option value="normal">normal</option>
-                        <option value="sahighab">high</option>
+                        <option value="high">high</option>
                         <option value="urgent">urgent</option>
                     </select>
                 </div>

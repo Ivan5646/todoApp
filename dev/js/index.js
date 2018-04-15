@@ -15,3 +15,20 @@ ReactDOM.render(
     </Provider>,
     document.getElementById('root')
 );
+
+
+function test(state=[], action) {
+    if (action.type === "ADD_TRACK") {
+        return [
+            ...state,
+            action.payload
+        ]
+    }
+    return state;
+}
+
+store.subscribe(() => {
+    console.log("subscribe", store.getState());
+})
+
+store.dispatch({type: "ADD_TRACK", payload: "smells like teen spirit"})
