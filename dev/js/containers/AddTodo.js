@@ -44,7 +44,7 @@ class AddTodo extends Component {
                     <label>Due Date</label>
                     <input placeholder="enter the due date of the task..."  />
                 </div>
-                <button type="button" onClick={this.addItem()}>Add Task</button>
+                <button type="button" onClick={this.addItem}>Add Task</button>
 
                 <div>{this.state.name}</div>
                 <div>{this.state.description}</div>
