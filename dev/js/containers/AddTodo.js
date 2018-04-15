@@ -20,6 +20,7 @@ class AddTodo extends Component {
 
     addItem() {
         console.log("addItem", this.nameInput.value);
+        this.props.onAddItem(this.nameInput.value);
     }
 
     render() {
@@ -61,8 +62,15 @@ class AddTodo extends Component {
 
 function mapStateToProps(state){ //takes a piece of state which is part of the Store and sends it to the Component as props
     return {
-       
+       state: state.item
     };
 }
 
-export default connect(mapStateToProps)(AddTodo); // this is now a contanier
+export default connect(
+    mapStateToProps,
+    dispatch => ({
+    onAddItem: (itemName) => {
+        dispatch({type: 'ADD_NAME', payload: 'itemName'});
+    }
+})
+)(AddTodo); // this is now a contanier
