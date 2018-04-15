@@ -7,14 +7,30 @@ class AddTodo extends Component {
         super(props);
 
         this.state = {
-            name: "default"
+            name: "default name",
+            description: "default description",
+            priority: "default priority",
+            due_date: "no due date"
         };
+
         this.handleNameChange = this.handleNameChange.bind(this);
+        this.handleDescriptionChange = this.handleDescriptionChange.bind(this);
+        this.handlePriorityChange = this.handlePriorityChange.bind(this);
+        this.handleDueDateChange = this.handleDueDateChange.bind(this);
         this.logOut = this.logOut.bind(this);
     }
 
     handleNameChange(e) {
        this.setState({name: e.target.value});
+    }
+    handleDescriptionChange(e) {
+       this.setState({description: e.target.value});
+    }
+    handlePriorityChange(e) {
+       this.setState({priority: e.target.value});
+    }
+    handleDueDateChange(e) {
+       this.setState({due_date: e.target.value});
     }
 
     addItem() {
@@ -30,10 +46,10 @@ class AddTodo extends Component {
                 </div>
                 <div> 
                     <label>Description</label>
-                    <input placeholder="enter task description..." />
+                    <input placeholder="enter task description..." onChange={this.handleDescriptionChange} />
                 </div>
                 <div> 
-                    <select name="priority" >
+                    <select name="priority" onChange={this.handlePriorityChange}>
                         <option value="normal">normal</option>
                         <option value="sahighab">high</option>
                         <option value="urgent">urgent</option>
@@ -41,10 +57,13 @@ class AddTodo extends Component {
                 </div>
                 <div> 
                     <label>Due Date</label>
-                    <input placeholder="enter the due date of the task..." />
+                    <input placeholder="enter the due date of the task..." onChange={this.handleDueDateChange} />
                 </div>
                 <button>Add Task</button>
                 <div>{this.state.name}</div>
+                <div>{this.state.description}</div>
+                <div>{this.state.priority}</div>
+                <div>{this.state.due_date}</div>
             </form>
         )
     }
