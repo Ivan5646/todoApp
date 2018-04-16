@@ -70,7 +70,7 @@ export default connect(
     mapStateToProps,
     dispatch => ({
     onAddItem: (itemName) => {
-        dispatch({type: 'ADD_NAME', payload: 'itemName'});
+        dispatch({type: 'ADD_NAME', payload: itemName});
     }
 })
 )(AddTodo); // this is now a contanier
