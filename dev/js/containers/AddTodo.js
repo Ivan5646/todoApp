@@ -62,7 +62,7 @@ class AddTodo extends Component {
 
 function mapStateToProps(state){ //takes a piece of state which is part of the Store and sends it to the Component as props
     return {
-       state: state.item
+       todoList: state.todoList
     };
 }
 
