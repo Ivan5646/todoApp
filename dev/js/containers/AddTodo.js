@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
+import {onAddItem} from '../actions/index';
 
 class AddTodo extends Component {
 
@@ -59,11 +61,8 @@ function mapStateToProps(state){ //takes a piece of state which is part of the S
     };
 }
 
-export default connect(
-    mapStateToProps,
-    dispatch => ({
-    onAddItem: (item) => {
-        dispatch({type: 'ADD_NAME', payload: item});
-    }
-})
-)(AddTodo); // this is now a contanier
+function matchDispathToProps(dispatch){
+    return bindActionCreators({onAddItem: onAddItem}, dispatch)
+}
+
+export default connect(mapStateToProps, matchDispathToProps)(AddTodo); // this is now a contanier
