@@ -6,21 +6,19 @@ class AddTodo extends Component {
     constructor(props) {
         super(props);
 
-        this.state = {
-            name: "default name",
-            description: "default description",
-            priority: "normal",
-            due_date: "no due date"
-        };
-
         this.addItem = this.addItem.bind(this);
         this.logOut = this.logOut.bind(this);
     }
 
-
     addItem() {
         console.log("addItem", this.nameInput.value);
-        this.props.onAddItem({id: this.nameInput.value, name: this.nameInput.value, description: this.description.value});
+        this.props.onAddItem({
+            id: this.nameInput.value, 
+            name: this.nameInput.value, 
+            description: this.description.value,
+            priority: this.priority.value,
+            due_date: this.due_date.value,
+        });
     }
 
     render() {
@@ -35,7 +33,7 @@ class AddTodo extends Component {
                     <input placeholder="enter task description..." ref={(input) => {this.description = input}} />
                 </div>
                 <div> 
-                    <select name="priority">
+                    <select name="priority" ref={(input) => {this.priority = input}}>
                         <option value="normal">normal</option>
                         <option value="high">high</option>
                         <option value="urgent">urgent</option>
@@ -43,14 +41,9 @@ class AddTodo extends Component {
                 </div>
                 <div> 
                     <label>Due Date</label>
-                    <input placeholder="enter the due date of the task..."  />
+                    <input placeholder="enter the due date of the task..."  ref={(input) => {this.due_date = input}}/>
                 </div>
                 <button type="button" onClick={this.addItem}>Add Task</button>
-
-                <div>{this.state.name}</div>
-                <div>{this.state.description}</div>
-                <div>{this.state.priority}</div>
-                <div>{this.state.due_date}</div>
             </form>
         )
     }
