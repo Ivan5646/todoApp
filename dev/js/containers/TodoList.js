@@ -9,7 +9,7 @@ class TodoList extends Component {
                 <li key={item.id}> 
                     <div>Name: {item.name}</div>
                     <div>Description: {item.description}</div>
-                    <div>Priority {item.priority}</div>
+                    <div>Priority: {item.priority}</div>
                     <div>Due Date: {item.due_date}</div>
                     <div>Complete Date: {item.complete_date}</div>
                 </li>

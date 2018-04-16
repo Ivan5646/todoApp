@@ -17,7 +17,7 @@ class AddTodo extends Component {
             name: this.nameInput.value, 
             description: this.description.value,
             priority: this.priority.value,
-            due_date: this.due_date.value,
+            due_date: this.due_date.value
         });
     }
 
