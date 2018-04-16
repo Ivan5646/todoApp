@@ -20,7 +20,7 @@ const inittialState = [
 
 export default function(state=inittialState, action) {
     switch(action.type) {
-        case "ADD_NAME": // type of the action. 
+        case "ADD_ITEM": // type of the action. 
         return [
             ...state,
             action.payload

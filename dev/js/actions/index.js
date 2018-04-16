@@ -1,6 +1,14 @@
-export const onAddItem = (item) => { // this is an Action Creator. How is the argument referred to user object?
+export const onAddItem = (item) => { // this is an Action Creator. 
     return { // this is the action itself or object
-        type: "ADD_NAME", // what is this?
+        type: "ADD_ITEM", 
         payload: item
     }
 }
+
+export const EeditItem = (item) => { // this is an Action Creator. 
+    return { // this is the action itself or object
+        type: "EDIT_ITEM", 
+        payload: item
+    }
+}
+
