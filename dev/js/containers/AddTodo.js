@@ -20,7 +20,7 @@ class AddTodo extends Component {
 
     addItem() {
         console.log("addItem", this.nameInput.value);
-        this.props.onAddItem(this.nameInput.value);
+        this.props.onAddItem({name: this.nameInput.value, description: this.description.value});
     }
 
     render() {
@@ -32,7 +32,7 @@ class AddTodo extends Component {
                 </div>
                 <div> 
                     <label>Description</label>
-                    <input placeholder="enter task description..." />
+                    <input placeholder="enter task description..." ref={(input) => {this.description = input}} />
                 </div>
                 <div> 
                     <select name="priority">
