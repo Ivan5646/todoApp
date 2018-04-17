@@ -15,17 +15,17 @@ class TodoList extends Component {
         //get the item.id and delete the item
         //todoList.item.id
 
-        function checkItemId(item) {
-            if (item.id != itemId) {
-                return true;
-            }
-            return false;
-        }
+        // function checkItemId(item) {
+        //     if (item.id != itemId) {
+        //         return true;
+        //     }
+        //     return false;
+        // }
 
         //this.props.todoList.filter(checkItemId);
         //console.log(this.props.todoList.filter(checkItemId));
 
-        this.props.deleteItem1(this.props.todoList.filter(checkItemId));
+        this.props.deleteItem1(itemId);
     }
 
     createList() {
