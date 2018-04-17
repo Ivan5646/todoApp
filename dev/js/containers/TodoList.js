@@ -13,7 +13,17 @@ class TodoList extends Component {
         //get the item.id and delete the item
         //todoList.item.id
 
-        console.log(itemId);
+        //console.log(itemId);
+
+        function checkItemId(item) {
+            if (item.id != itemId) {
+                return true;
+            }
+            return false;
+        }
+
+        //this.props.todoList.filter(checkItemId);
+        console.log(this.props.todoList.filter(checkItemId));
 
     }
 
