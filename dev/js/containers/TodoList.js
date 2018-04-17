@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
+import {deleteItem} from '../actions/index';
 
 class TodoList extends Component {
 
@@ -13,8 +15,6 @@ class TodoList extends Component {
         //get the item.id and delete the item
         //todoList.item.id
 
-        //console.log(itemId);
-
         function checkItemId(item) {
             if (item.id != itemId) {
                 return true;
@@ -23,8 +23,9 @@ class TodoList extends Component {
         }
 
         //this.props.todoList.filter(checkItemId);
-        console.log(this.props.todoList.filter(checkItemId));
+        //console.log(this.props.todoList.filter(checkItemId));
 
+        this.props.deleteItem1(this.props.todoList.filter(checkItemId));
     }
 
     createList() {
@@ -57,4 +58,8 @@ function mapStateToProps(state){ //takes a piece of state which is part of the S
     };
 }
 
-export default connect(mapStateToProps)(TodoList); // this is now a contanier
+function matchDispathToProps(dispatch){
+    return bindActionCreators({deleteItem1: deleteItem}, dispatch)
+}
+
+export default connect(mapStateToProps, matchDispathToProps)(TodoList); // this is now a contanier

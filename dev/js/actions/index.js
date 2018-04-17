@@ -5,10 +5,10 @@ export const onAddItem = (item) => { // this is an Action Creator.
     }
 }
 
-export const DeleteItem = (itemId) => { // this is an Action Creator. 
+export const deleteItem = (filteredArray) => { // this is an Action Creator. 
     return { // this is the action itself or object
         type: "DELETE_ITEM", 
-        payload: itemId
+        payload: filteredArray
     }
 }
 

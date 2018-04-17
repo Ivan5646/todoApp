@@ -24,7 +24,12 @@ export default function(state=inittialState, action) {
         return [
             ...state,
             action.payload
-        ]
+        ];
+        case "DELETE_ITEM": 
+        return [
+        ...state,
+        action.payload
+        ];
     }
     return state;
 }
