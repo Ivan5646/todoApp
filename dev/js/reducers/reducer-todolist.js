@@ -34,14 +34,14 @@ export default function(state=inittialState, action) {
             action.payload
         ];
         case "DELETE_ITEM": 
-        return [
+        return 
             state.filter((item) => {
                 if (item.id != action.payload) {
                     return true;
                 }
                 return false;
-            }),
-        ];
+            })
+
     }
     return state;
 }
