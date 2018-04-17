@@ -14,7 +14,7 @@ class AddTodo extends Component {
 
     addItem() {
         console.log("addItem", this.nameInput.value);
-        this.props.onAddItem({
+        this.props.onAddItem1({
             id: this.nameInput.value, 
             name: this.nameInput.value, 
             description: this.description.value,
@@ -62,7 +62,7 @@ function mapStateToProps(state){ //takes a piece of state which is part of the S
 }
 
 function matchDispathToProps(dispatch){
-    return bindActionCreators({onAddItem: onAddItem}, dispatch)
+    return bindActionCreators({onAddItem1: onAddItem}, dispatch)
 }
 
 export default connect(mapStateToProps, matchDispathToProps)(AddTodo); // this is now a contanier
