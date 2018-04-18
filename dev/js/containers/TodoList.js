@@ -22,11 +22,9 @@ class TodoList extends Component {
     }
 
     toogleEditForm() {
-        if(this.state.showForm==false) {
-            console.log("state.showForm: " + this.state.showForm);
-            return <EditItem />
-        }
-        this.state.showForm = true;
+        this.setState({
+          showForm: !this.state.showForm
+        })
     }
 
     createList() {
@@ -40,6 +38,7 @@ class TodoList extends Component {
                     <div>Complete Date: {item.complete_date}</div>
                     <button onClick={() => this.deleteItem(item.id)} >Delete Task</button>
                     <button onClick={() => this.toogleEditForm()}>Edit Task</button>
+                    {this.state.showForm && <EditItem />}
                 </li>
             );
         });
