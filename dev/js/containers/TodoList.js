@@ -2,30 +2,31 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import {deleteItem} from '../actions/index';
+import EditItem from './EditItem';
 
 class TodoList extends Component {
 
         constructor(props) {
         super(props);
 
+        this.state = {
+          showForm: false 
+      };
+
         this.deleteItem = this.deleteItem.bind(this);
+        this.toogleEditForm = this.toogleEditForm.bind(this);
     }
 
     deleteItem(itemId) {
-        //get the item.id and delete the item
-        //todoList.item.id
-
-        // function checkItemId(item) {
-        //     if (item.id != itemId) {
-        //         return true;
-        //     }
-        //     return false;
-        // }
-
-        //this.props.todoList.filter(checkItemId);
-        //console.log(this.props.todoList.filter(checkItemId));
-
         this.props.deleteItem1(itemId);
+    }
+
+    toogleEditForm() {
+        if(this.state.showForm==false) {
+            console.log("state.showForm: " + this.state.showForm);
+            return <EditItem />
+        }
+        this.state.showForm = true;
     }
 
     createList() {
@@ -38,6 +39,7 @@ class TodoList extends Component {
                     <div>Due Date: {item.due_date}</div>
                     <div>Complete Date: {item.complete_date}</div>
                     <button onClick={() => this.deleteItem(item.id)} >Delete Task</button>
+                    <button onClick={() => this.toogleEditForm()}>Edit Task</button>
                 </li>
             );
         });
