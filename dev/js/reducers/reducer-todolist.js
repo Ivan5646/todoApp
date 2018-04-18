@@ -17,15 +17,6 @@ const inittialState = [
     }
 ];
 
-
-// function checkItemId(item) {
-//     if (item.id != itemId) {
-//         return true;
-//     }
-//     return false;
-// }
-
-
 export default function(state=inittialState, action) {
     switch(action.type) {
         case "ADD_ITEM": // type of the action. 
@@ -33,15 +24,13 @@ export default function(state=inittialState, action) {
             ...state,
             action.payload
         ];
-        case "DELETE_ITEM": 
-        return 
-            state.filter((item) => {
+       case "DELETE_ITEM": 
+        return state.filter((item) => {
                 if (item.id != action.payload) {
                     return true;
                 }
                 return false;
             })
-
     }
     return state;
 }
