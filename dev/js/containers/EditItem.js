@@ -26,7 +26,7 @@ class EditItem extends Component {
                     <label>Due Date</label>
                     <input placeholder="enter the due date of the task..."  ref={(input) => {this.due_date = input}}/>
                 </div>
-                <button type="button" onClick={() => <EditItem/>}>Add Task</button>
+                <button type="button" onClick={() => <EditItem/>}>Done</button>
             </form>
         )
     }
