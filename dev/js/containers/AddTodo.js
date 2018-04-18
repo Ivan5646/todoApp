@@ -13,7 +13,7 @@ class AddTodo extends Component {
     }
 
     addItem() {
-        console.log("addItem", this.nameInput.value);
+        //console.log("addItem", this.nameInput.value);
         this.props.onAddItem1({
             id: this.nameInput.value, 
             name: this.nameInput.value, 
@@ -21,6 +21,7 @@ class AddTodo extends Component {
             priority: this.priority.value,
             due_date: this.due_date.value
         });
+        console.log("props", this.props.todoList[0].name); // getting the value of the state example
     }
 
     render() {

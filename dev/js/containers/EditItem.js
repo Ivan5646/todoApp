@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
+import TodoList from './TodoList';
 
 class EditItem extends Component {
 
@@ -13,7 +14,7 @@ class EditItem extends Component {
                 </div>
                 <div> 
                     <label>Description</label>
-                    <input placeholder="enter task description..." ref={(input) => {this.description = input}} />
+                    <input placeholder="enter task description..." value={this.props.description}  ref={(input) => {this.description = input}} />
                 </div>
                 <div> 
                     <select name="priority" ref={(input) => {this.priority = input}}>
@@ -32,10 +33,10 @@ class EditItem extends Component {
     }
 }
 
-function mapStateToProps(state){ 
-    return {
-        todoList: state.todoList 
-    };
-}
+// function mapStateToProps(state){ 
+//     return {
+//         todoList: state.todoList 
+//     };
+// }
 
-export default connect(mapStateToProps)(EditItem); // this is now a contanier
+export default connect()(EditItem); // this is now a contanier
