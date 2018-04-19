@@ -1,18 +1,32 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
 import TodoList from './TodoList';
+import {editItem} from '../actions/index';
 
 class EditItem extends Component {
 
     constructor(props) {
         super(props);
         this.handleChange = this.handleChange.bind(this);
+        this.onEditItem = this.onEditItem.bind(this);
     }
 
     handleChange(event) {
         this.setState({
             value: event.currentTarget.value
          })
+    }
+
+    onEditItem() {
+        this.props.EditItem1({
+            id: this.nameInput.value, 
+            name: this.nameInput.value, 
+            description: this.description.value,
+            priority: this.priority.value,
+            due_date: this.due_date.value,
+            complete_date: this.complete_date
+        });
     }
 
     render() {
@@ -41,7 +55,7 @@ class EditItem extends Component {
                     <label>Complete Date</label>
                     <input placeholder="enter the complete date of the task..." defaultValue={this.props.complete_date}   ref={(input) => {this.due_date = input}}/>
                 </div>
-                <button type="button" onClick={() => <EditItem/>}>Done</button>
+                <button type="button" onClick={this.onEditItem}>Done</button>
             </form>
         )
     }
@@ -53,4 +67,8 @@ class EditItem extends Component {
 //     };
 // }
 
-export default connect()(EditItem); // this is now a contanier
+function matchDispathToProps(dispatch){
+    return bindActionCreators({EditItem1: editItem}, dispatch)
+}
+
+export default connect(matchDispathToProps)(EditItem); // this is now a contanier
