@@ -24,13 +24,20 @@ export default function(state=inittialState, action) {
             ...state,
             action.payload
         ];
-       case "DELETE_ITEM": 
+        case "DELETE_ITEM": 
         return state.filter((item) => {
-                if (item.id != action.payload) {
-                    return true;
-                }
-                return false;
-            })
+                    if (item.id != action.payload) {
+                        return true;
+                    }
+                    return false;
+                });
+        case "EDIT_ITEM": 
+        return state.map((obj) => {
+            if(obj.id == action.payload.id) {
+                obj = action.payload;
+            }
+            return obj;
+        });
     }
     return state;
 }

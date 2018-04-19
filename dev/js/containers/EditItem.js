@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import TodoList from './TodoList';
-import {editItem} from '../actions/index';
+import {editItem} from '../actions/index'; 
 
 class EditItem extends Component {
 
@@ -19,8 +19,8 @@ class EditItem extends Component {
     }
 
     onEditItem() {
-        this.props.EditItem1({
-            id: this.nameInput.value, 
+        this.props.editItem1({
+            id: this.props.id, 
             name: this.nameInput.value, 
             description: this.description.value,
             priority: this.priority.value,
@@ -34,7 +34,7 @@ class EditItem extends Component {
             <form>
                 <div> 
                     <label>Name</label>
-                    <input type="text" placeholder="enter the name of the task..." defaultValue={this.props.name} onChange={ this.handleChange }  ref={(input) => {this.nameInput = input}} />
+                    <input type="text" placeholder="enter the name of the task..." defaultValue={this.props.name} ref={(input) => {this.nameInput = input}} />
                 </div>
                 <div> 
                     <label>Description</label>
@@ -61,14 +61,14 @@ class EditItem extends Component {
     }
 }
 
-// function mapStateToProps(state){ 
-//     return {
-//         todoList: state.todoList 
-//     };
-// }
-
-function matchDispathToProps(dispatch){
-    return bindActionCreators({EditItem1: editItem}, dispatch)
+function mapStateToProps(state){ 
+    return {
+        todoList: state.todoList 
+    };
 }
 
-export default connect(matchDispathToProps)(EditItem); // this is now a contanier
+function matchDispathToProps(dispatch){
+    return bindActionCreators({editItem1: editItem}, dispatch)
+}
+
+export default connect(mapStateToProps, matchDispathToProps)(EditItem); // this is now a contanier
