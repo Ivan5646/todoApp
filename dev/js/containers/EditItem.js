@@ -8,14 +8,7 @@ class EditItem extends Component {
 
     constructor(props) {
         super(props);
-        this.handleChange = this.handleChange.bind(this);
         this.onEditItem = this.onEditItem.bind(this);
-    }
-
-    handleChange(event) {
-        this.setState({
-            value: event.currentTarget.value
-         })
     }
 
     onEditItem() {
@@ -23,25 +16,25 @@ class EditItem extends Component {
             id: this.props.id, 
             name: this.nameInput.value, 
             description: this.description.value,
-            priority: this.priority.value,
             due_date: this.due_date.value,
-            complete_date: this.complete_date
+            complete_date: this.complete_date,
+            priority: this.priority.value
         });
     }
 
     render() {
         return (
-            <form>
+            <form className="editForm">
                 <div> 
                     <label>Name</label>
                     <input type="text" placeholder="enter the name of the task..." defaultValue={this.props.name} ref={(input) => {this.nameInput = input}} />
                 </div>
                 <div> 
                     <label>Description</label>
-                    <input placeholder="enter task description..." defaultValue={this.props.description}  ref={(input) => {this.description = input}} />
+                    <input placeholder="enter task description..." defaultValue={this.props.description} ref={(input) => {this.description = input}} />
                 </div>
                 <div> 
-                    <select name="priority" defaultValue={this.props.priority}  ref={(input) => {this.priority = input}}>
+                    <select name="priority" defaultValue={this.props.priority} ref={(input) => {this.priority = input}}>
                         <option value="normal">normal</option>
                         <option value="high">high</option>
                         <option value="urgent">urgent</option>
@@ -49,11 +42,11 @@ class EditItem extends Component {
                 </div>
                 <div> 
                     <label>Due Date</label>
-                    <input placeholder="enter the due date of the task..." defaultValue={this.props.due_date}   ref={(input) => {this.due_date = input}}/>
+                    <input placeholder="enter the due date of the task..." defaultValue={this.props.due_date} ref={(input) => {this.due_date = input}} />
                 </div>
                 <div> 
                     <label>Complete Date</label>
-                    <input placeholder="enter the complete date of the task..." defaultValue={this.props.complete_date}   ref={(input) => {this.due_date = input}}/>
+                    <input placeholder="enter the complete date of the task..." defaultValue={this.props.complete_date} ref={(input) => {this.due_date = input}} />
                 </div>
                 <button type="button" onClick={this.onEditItem}>Done</button>
             </form>
