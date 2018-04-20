@@ -10,11 +10,13 @@ class TodoList extends Component {
         super(props);
 
         this.state = {
-          showForm: false 
+          showForm: false
+          // checked: this.props.todoList[0].completed
       };
 
         this.deleteItem = this.deleteItem.bind(this);
         this.toogleEditForm = this.toogleEditForm.bind(this);
+        this.checkCompleted = this.checkCompleted.bind(this);
     }
 
     deleteItem(itemId) {
@@ -28,10 +30,25 @@ class TodoList extends Component {
         })
     }
 
+    checkCompleted(event) {
+        // get the checked value of the checkbox
+
+        // this.setState({
+        //     //checked: event.currentTarget.value
+        //     //checked: this.completed.value
+        //     checked: event.target.value
+        // })
+        var checked = event.target.checked;
+        //debugger;
+        //console.log("checked: " + this.state.checked);
+        console.log("checked: " + checked);
+    }
+
     createList() {
         return this.props.todoList.map((item) => { 
             return (
-                <li key={item.id} className="task"> 
+                <li key={item.id} className="task" > 
+                    <input type="checkbox" defaultChecked={item.completed} onClick={this.checkCompleted} />
                     <div>Name: {item.name}</div>
                     <div>Description: {item.description}</div>
                     <div>Priority: {item.priority}</div>

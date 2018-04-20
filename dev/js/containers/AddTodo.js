@@ -20,7 +20,8 @@ class AddTodo extends Component {
             description: this.description.value,
             due_date: this.due_date.value,
             complete_date: "", // fix this
-            priority: this.priority.value
+            priority: this.priority.value,
+            completed: false
             
         });
         console.log("props", this.props.todoList[0].name); // getting the value of the state example

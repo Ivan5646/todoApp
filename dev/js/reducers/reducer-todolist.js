@@ -6,6 +6,7 @@ const inittialState = [
         due_date: "05.05.18",
         complete_date: "",
         priority: "high",
+        completed: false
     },
     {
         id: 2,
@@ -14,6 +15,7 @@ const inittialState = [
         due_date: "20.06.18",
         complete_date: "",
         priority: "normal",
+        completed: true
     }
 ];
 
