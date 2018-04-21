@@ -25,7 +25,7 @@ class AddTodo extends Component {
             completed: false
             
         });
-        console.log("props", this.props.todoList[0].name); // getting the value of the state example
+        //console.log("props", this.props.todoList[0].name); // getting the value of the state example
     }
 
     render() {

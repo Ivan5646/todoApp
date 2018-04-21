@@ -42,11 +42,19 @@ export default function(state=inittialState, action) {
         });
         case "CHECK_COMPLETED":  // find the required item by id and change its completed property 
         return state.map((obj) => {
-            if(obj.id == action.payload) { // Cannot read property 'id' of undefined
+            if(obj.id == action.payload) { 
                 obj.completed = !obj.completed;
             }
             return obj;
         });
+        case "RECORD_DATE": 
+        return state.map((obj) => {
+            if (obj.id == action.id) {
+                obj.completed = action.payload
+            }
+            return obj;
+        });
+
     }
     return state;
 }

@@ -25,3 +25,11 @@ export const checkCompleted = (itemId) => {
         payload: itemId
     }
 }
+
+export const recordDate = (date, itemId) => { 
+    return { 
+        type: "RECORD_DATE", 
+        payload: date,
+        id: itemId
+    }
+}

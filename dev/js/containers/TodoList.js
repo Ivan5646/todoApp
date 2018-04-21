@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import {deleteItem, checkCompleted} from '../actions/index';
+import {deleteItem, checkCompleted, recordDate} from '../actions/index';
 import EditItem from './EditItem';
 
 class TodoList extends Component {
@@ -31,23 +31,12 @@ class TodoList extends Component {
     }
 
     checkCompleted(itemId) {
-        // get the checked value of the checkbox
-
-        // this.setState({
-        //     //checked: event.currentTarget.value
-        //     //checked: this.completed.value
-        //     checked: event.target.value
-        // })
-        //var checked = event.target.checked;
-        //debugger;
-        //console.log("checked: " + this.state.checked);
-        //console.log("checked: " + checked);
         this.props.checkCompleted1(itemId);
-    }
 
-    // logCompleted() {
-    //     console.log(this.props.todoList[0].completed);
-    // }
+        // record the complete date
+        var date = new Date();
+        this.props.recordDate1(date, itemId);
+    }
 
     createList() {
         return this.props.todoList.map((item) => { 
@@ -83,7 +72,7 @@ function mapStateToProps(state){ //takes a piece of state which is part of the S
 }
 
 function matchDispathToProps(dispatch){
-    return bindActionCreators({deleteItem1: deleteItem, checkCompleted1: checkCompleted}, dispatch)
+    return bindActionCreators({deleteItem1: deleteItem, checkCompleted1: checkCompleted, recordDate1: recordDate}, dispatch)
 }
 
 export default connect(mapStateToProps, matchDispathToProps)(TodoList); // this is now a contanier
