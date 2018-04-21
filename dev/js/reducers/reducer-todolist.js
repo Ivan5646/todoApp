@@ -40,6 +40,13 @@ export default function(state=inittialState, action) {
             }
             return obj;
         });
+        case "CHECK_COMPLETED":  // find the required item by id and change its completed property 
+        return state.map((obj) => {
+            if(obj.id == action.payload) { // Cannot read property 'id' of undefined
+                obj.completed = !obj.completed;
+            }
+            return obj;
+        });
     }
     return state;
 }

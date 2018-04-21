@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import {deleteItem} from '../actions/index';
+import {deleteItem, checkCompleted} from '../actions/index';
 import EditItem from './EditItem';
 
 class TodoList extends Component {
@@ -30,7 +30,7 @@ class TodoList extends Component {
         })
     }
 
-    checkCompleted(event) {
+    checkCompleted(itemId) {
         // get the checked value of the checkbox
 
         // this.setState({
@@ -38,17 +38,22 @@ class TodoList extends Component {
         //     //checked: this.completed.value
         //     checked: event.target.value
         // })
-        var checked = event.target.checked;
+        //var checked = event.target.checked;
         //debugger;
         //console.log("checked: " + this.state.checked);
-        console.log("checked: " + checked);
+        //console.log("checked: " + checked);
+        this.props.checkCompleted1(itemId);
     }
+
+    // logCompleted() {
+    //     console.log(this.props.todoList[0].completed);
+    // }
 
     createList() {
         return this.props.todoList.map((item) => { 
             return (
                 <li key={item.id} className="task" > 
-                    <input type="checkbox" defaultChecked={item.completed} onClick={this.checkCompleted} />
+                    <input type="checkbox" defaultChecked={item.completed} onClick={() => this.checkCompleted(item.id)} />
                     <div>Name: {item.name}</div>
                     <div>Description: {item.description}</div>
                     <div>Priority: {item.priority}</div>
@@ -78,7 +83,7 @@ function mapStateToProps(state){ //takes a piece of state which is part of the S
 }
 
 function matchDispathToProps(dispatch){
-    return bindActionCreators({deleteItem1: deleteItem}, dispatch)
+    return bindActionCreators({deleteItem1: deleteItem, checkCompleted1: checkCompleted}, dispatch)
 }
 
 export default connect(mapStateToProps, matchDispathToProps)(TodoList); // this is now a contanier

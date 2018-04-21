@@ -19,3 +19,9 @@ export const editItem = (item) => {
     }
 }
 
+export const checkCompleted = (itemId) => { 
+    return { 
+        type: "CHECK_COMPLETED", 
+        payload: itemId
+    }
+}
