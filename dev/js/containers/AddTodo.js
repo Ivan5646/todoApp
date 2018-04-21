@@ -14,8 +14,9 @@ class AddTodo extends Component {
 
     addItem() {
         //console.log("addItem", this.nameInput.value);
+        var date = new Date();
         this.props.onAddItem1({
-            id: this.nameInput.value, 
+            id: Date.parse(date), 
             name: this.nameInput.value, 
             description: this.description.value,
             due_date: this.due_date.value,
