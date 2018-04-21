@@ -47,7 +47,7 @@ class TodoList extends Component {
                     <div>Description: {item.description}</div>
                     <div>Priority: {item.priority}</div>
                     <div>Due Date: {item.due_date}</div>
-                    <div>Complete Date: {item.complete_date}</div>
+                    <div>Complete Date: {item.complete_date.toString()}</div>
                     <button onClick={() => this.deleteItem(item.id)} >Delete Task</button>
                     <button onClick={() => this.toogleEditForm(item.id)}>Edit Task</button>
                     {this.state.showForm && this.state.showId==item.id && <EditItem id={item.id} name={item.name} description={item.description} due_date={item.due_date} complete_date={item.complete_date} priority={item.priority} />}

@@ -4,7 +4,7 @@ const inittialState = [
         name: "Learn React.js",
         description: "learn react.js and redux, build an app",
         due_date: "05.05.18",
-        complete_date: "",
+        complete_date: {},
         priority: "high",
         completed: false
     },
@@ -13,7 +13,7 @@ const inittialState = [
         name: "Learn Node.js",
         description: "create a server app",
         due_date: "20.06.18",
-        complete_date: "",
+        complete_date: {},
         priority: "normal",
         completed: true
     }
@@ -50,7 +50,7 @@ export default function(state=inittialState, action) {
         case "RECORD_DATE": 
         return state.map((obj) => {
             if (obj.id == action.id) {
-                obj.completed = action.payload
+                obj.complete_date = action.payload
             }
             return obj;
         });
