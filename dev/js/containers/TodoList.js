@@ -30,19 +30,22 @@ class TodoList extends Component {
         })
     }
 
-    checkCompleted(itemId) {
+    checkCompleted(itemId, itemCompleted) {
         this.props.checkCompleted1(itemId);
 
-        // record the complete date
-        var date = new Date();
-        this.props.recordDate1(date, itemId);
+        // check if the task is completed, if it is not then the completion date should be recorded
+        if(!itemCompleted) {        
+            // record the complete date
+            var date = new Date();       
+            this.props.recordDate1(date, itemId);
+        }
     }
 
     createList() {
         return this.props.todoList.map((item) => { 
             return (
                 <li key={item.id} className="task" > 
-                    <input type="checkbox" defaultChecked={item.completed} onClick={() => this.checkCompleted(item.id)} />
+                    <input type="checkbox" defaultChecked={item.completed} onClick={() => this.checkCompleted(item.id, item.completed)} />
                     <div>Name: {item.name}</div>
                     <div>Description: {item.description}</div>
                     <div>Priority: {item.priority}</div>
