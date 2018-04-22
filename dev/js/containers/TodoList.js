@@ -38,6 +38,11 @@ class TodoList extends Component {
             // record the complete date
             var date = new Date();       
             this.props.recordDate1(date, itemId);
+
+            // pass the time too
+            var time = date.toTimeString();
+            time = time.split(' ')[0];
+
         }
     }
 
@@ -49,7 +54,7 @@ class TodoList extends Component {
                     <div>Name: {item.name}</div>
                     <div>Description: {item.description}</div>
                     <div>Priority: {item.priority}</div>
-                    <div type="date">Due Date: {item.due_date}</div>
+                    <div>Due Date: {item.due_date}</div>
                     <div>Complete Date: {
                         item.complete_date=="" ? "" : ( item.complete_date.getHours(), item.complete_date.getMinutes(), item.complete_date.toDateString() )
                     }</div>
