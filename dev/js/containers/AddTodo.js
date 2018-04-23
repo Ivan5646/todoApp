@@ -15,17 +15,18 @@ class AddTodo extends Component {
     addItem() {
         //console.log("addItem", this.nameInput.value);
         var date = new Date();
+        var due_date_obj = new Date(this.due_date.value);
         this.props.onAddItem1({
             id: Date.parse(date), 
             name: this.nameInput.value, 
             description: this.description.value,
-            due_date: this.due_date.value,
+            due_date: due_date_obj,
             complete_date: "", // fix this
             priority: this.priority.value,
             completed: false
             
         });
-        //console.log("props", this.props.todoList[0].name); // getting the value of the state example
+        //console.log("props", this.props.todoList[0].due_date); // getting the value of the state example
     }
 
     render() {

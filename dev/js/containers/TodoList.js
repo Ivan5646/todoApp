@@ -35,14 +35,19 @@ class TodoList extends Component {
 
         // check if the task is completed, if it is not then the completion date should be recorded
         if(!itemCompleted) {        
-            // record the complete date
-            var date = new Date();       
-            this.props.recordDate1(date, itemId);
-
-            // pass the time too
+            // record the complete date and time
+            var date = new Date(); 
             var time = date.toTimeString();
             time = time.split(' ')[0];
 
+            this.props.recordDate1(date, itemId);
+        }
+    }
+
+    compareCompletedDueDate() {
+        // check if due_date is object
+        if (todoList[2]) {
+            console.log(todoList[2].due_date);
         }
     }
 
@@ -54,7 +59,7 @@ class TodoList extends Component {
                     <div>Name: {item.name}</div>
                     <div>Description: {item.description}</div>
                     <div>Priority: {item.priority}</div>
-                    <div>Due Date: {item.due_date}</div>
+                    <div>Due Date: {item.due_date.toString()}</div>
                     <div>Complete Date: {
                         item.complete_date=="" ? "" : ( item.complete_date.getHours(), item.complete_date.getMinutes(), item.complete_date.toDateString() )
                     }</div>
