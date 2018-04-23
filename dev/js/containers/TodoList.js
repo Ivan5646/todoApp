@@ -17,6 +17,7 @@ class TodoList extends Component {
         this.deleteItem = this.deleteItem.bind(this);
         this.toogleEditForm = this.toogleEditForm.bind(this);
         this.checkCompleted = this.checkCompleted.bind(this);
+        this.compareCompletedDueDate = this.compareCompletedDueDate.bind(this);
     }
 
     deleteItem(itemId) {
@@ -37,17 +38,15 @@ class TodoList extends Component {
         if(!itemCompleted) {        
             // record the complete date and time
             var date = new Date(); 
-            var time = date.toTimeString();
-            time = time.split(' ')[0];
-
+            // var time = date.toTimeString();
+            // time = time.split(' ')[0];
             this.props.recordDate1(date, itemId);
         }
     }
 
-    compareCompletedDueDate() {
-        // check if due_date is object
-        if (todoList[2]) {
-            console.log(todoList[2].due_date);
+    compareCompletedDueDate(dueDate, completeDate) {
+        if (dueDate > dueDate) {
+            return  "red";
         }
     }
 
@@ -56,12 +55,12 @@ class TodoList extends Component {
             return (
                 <li key={item.id} className="task" > 
                     <input type="checkbox" defaultChecked={item.completed} onClick={() => this.checkCompleted(item.id, item.completed)} />
-                    <div>Name: {item.name}</div>
+                    <div className={this.compareCompletedDueDate(item.due_date, item.complete_date)}>Name: {item.name}</div>
                     <div>Description: {item.description}</div>
                     <div>Priority: {item.priority}</div>
                     <div>Due Date: {item.due_date.toString()}</div>
                     <div>Complete Date: {
-                        item.complete_date=="" ? "" : ( item.complete_date.getHours(), item.complete_date.getMinutes(), item.complete_date.toDateString() )
+                        item.complete_date=="" ? "" : (item.complete_date.toString())
                     }</div>
                     <button onClick={() => this.deleteItem(item.id)} >Delete Task</button>
                     <button onClick={() => this.toogleEditForm(item.id)}>Edit Task</button>
