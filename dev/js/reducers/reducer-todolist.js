@@ -1,5 +1,5 @@
 var testDate = new Date();
-var testDueDate = new Date('2018-04-20T10:20:30Z');
+var testDueDate = new Date('2018-08-20T10:20:30Z');
 var testDueDate2 = new Date('2018-03-20T10:20:30Z');
 var testCompleteDate = new Date('2018-06-20T10:20:30Z');
 

@@ -45,8 +45,12 @@ class TodoList extends Component {
     }
 
     compareCompletedDueDate(dueDate, completeDate) {
-        if (completeDate != "" && dueDate < completeDate) { // > reversed for test
-            return  "grey";
+        // if (completeDate != "" && dueDate < completeDate) { 
+        //     return  "grey";
+        // }
+        var currnetDate = new Date(); 
+        if (dueDate < currnetDate) {
+            return "red";
         }
     }
 
