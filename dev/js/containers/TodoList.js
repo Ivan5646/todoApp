@@ -17,7 +17,7 @@ class TodoList extends Component {
         this.deleteItem = this.deleteItem.bind(this);
         this.toogleEditForm = this.toogleEditForm.bind(this);
         this.checkCompleted = this.checkCompleted.bind(this);
-        this.compareCompletedDueDate = this.compareCompletedDueDate.bind(this);
+        this.compareCurrentDateDueDate = this.compareCurrentDateDueDate.bind(this);
     }
 
     deleteItem(itemId) {
@@ -44,7 +44,7 @@ class TodoList extends Component {
         }
     }
 
-    compareCompletedDueDate(dueDate, completeDate) {
+    compareCurrentDateDueDate(dueDate) {
         // if (completeDate != "" && dueDate < completeDate) { 
         //     return  "grey";
         // }
@@ -57,7 +57,7 @@ class TodoList extends Component {
     createList() {
         return this.props.todoList.map((item) => { 
             return (
-                <li key={item.id} className="task" className={this.compareCompletedDueDate(item.due_date, item.complete_date)}> 
+                <li key={item.id} className="task" className={this.compareCurrentDateDueDate(item.due_date)}> 
                     <input type="checkbox" defaultChecked={item.completed} onClick={() => this.checkCompleted(item.id, item.completed)} />
                     <div>Name: {item.name}</div>
                     <div>Description: {item.description}</div>
