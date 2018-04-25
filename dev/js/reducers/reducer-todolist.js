@@ -1,11 +1,12 @@
 var testDate = new Date();
+var testDueDate = new Date('2018-04-20T10:20:30Z');
 
 const inittialState = [
     {
         id: 1,
         name: "Learn React.js",
         description: "learn react.js and redux, build an app",
-        due_date: "05.05.18",
+        due_date: testDueDate,
         complete_date: "",
         priority: "high",
         completed: false

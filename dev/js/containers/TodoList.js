@@ -45,7 +45,7 @@ class TodoList extends Component {
     }
 
     compareCompletedDueDate(dueDate, completeDate) {
-        if (dueDate > dueDate) {
+        if (completeDate != "" && dueDate < completeDate) { // > reversed for test
             return  "red";
         }
     }
