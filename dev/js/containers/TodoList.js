@@ -34,28 +34,28 @@ class TodoList extends Component {
     checkCompleted(itemId, itemCompleted) {
         this.props.checkCompleted1(itemId);
 
-        // check if the task is completed, if it is not then the completion date should be recorded
+        // if the task is not completed, check its checkbox and record the completion date
         if(!itemCompleted) {        
             // record the complete date and time
             var date = new Date(); 
-            // var time = date.toTimeString();
-            // time = time.split(' ')[0];
             this.props.recordDate1(date, itemId);
+        }else {
+            this.props.recordDate1("", itemId);
         }
     }
 
     compareCompletedDueDate(dueDate, completeDate) {
         if (completeDate != "" && dueDate < completeDate) { // > reversed for test
-            return  "red";
+            return  "grey";
         }
     }
 
     createList() {
         return this.props.todoList.map((item) => { 
             return (
-                <li key={item.id} className="task" > 
+                <li key={item.id} className="task" className={this.compareCompletedDueDate(item.due_date, item.complete_date)}> 
                     <input type="checkbox" defaultChecked={item.completed} onClick={() => this.checkCompleted(item.id, item.completed)} />
-                    <div className={this.compareCompletedDueDate(item.due_date, item.complete_date)}>Name: {item.name}</div>
+                    <div>Name: {item.name}</div>
                     <div>Description: {item.description}</div>
                     <div>Priority: {item.priority}</div>
                     <div>Due Date: {item.due_date.toString()}</div>
