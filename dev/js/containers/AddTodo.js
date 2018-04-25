@@ -10,6 +10,15 @@ class AddTodo extends Component {
 
         this.addItem = this.addItem.bind(this);
         this.logOut = this.logOut.bind(this);
+        this.getDate = this.getDate.bind(this);
+    }
+
+    getDate() {
+        var date = new Date();
+        //console.log(date.toISOString());
+        var convertedDate = date.getFullYear() + "-" + ("0" + (date.getMonth() + 1)).slice(-2) + "-" + date.getDate() + "T" + date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds();
+        console.log(convertedDate);
+        return convertedDate;
     }
 
     addItem() {
@@ -49,7 +58,7 @@ class AddTodo extends Component {
                 </div>
                 <div> 
                     <label>Due Date</label>
-                    <input type="datetime-local" placeholder="enter the due date of the task..."  ref={(input) => {this.due_date = input}}/>
+                    <input type="datetime-local" placeholder="enter the due date of the task..." defaultValue={this.getDate()} ref={(input) => {this.due_date = input}}/>
                 </div>
                 <button type="button" onClick={this.addItem}>Add Task</button>
             </form>
