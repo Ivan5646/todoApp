@@ -3,10 +3,12 @@ import React from 'react';
 import ReactDOM from "react-dom";
 import {Provider} from 'react-redux';
 import {createStore} from "redux"; 
+import {loadState, saveState} from './localStorage';
 import App from './components/App';
 import allReducers from "./reducers";
 
-const store = createStore(allReducers);
+const persistedState = loadState();
+const store = createStore(allReducers, persistedState);
 
 // here <Provider store={store}>  every component has access to store data now  
 ReactDOM.render(
@@ -16,19 +18,10 @@ ReactDOM.render(
     document.getElementById('root')
 );
 
-
-// function test(state=[], action) {
-//     if (action.type === "ADD_TRACK") {
-//         return [
-//             ...state,
-//             action.payload
-//         ]
-//     }
-//     return state;
-// }
-
 store.subscribe(() => {
-    console.log("subscribe", store.getState());
-})
+    saveState(store.getState());
+});
 
-// store.dispatch({type: "ADD_TRACK", payload: "smells like teen spirit"})
+// store.subscribe(() => {
+//     console.log("subscribe", store.getState());
+// })
