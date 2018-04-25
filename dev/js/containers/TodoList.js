@@ -63,7 +63,7 @@ class TodoList extends Component {
                     <div>Name: {item.name}</div>
                     <div>Description: {item.description}</div>
                     <div>Priority: {item.priority}</div>
-                    <div>Due Date: {item.due_date.toString()}</div>
+                    <div>Due Date: {item.due_date instanceof Date && !isNaN(item.due_date.valueOf()) && item.due_date.toString()}</div>
                     <div>Complete Date: {
                         item.complete_date=="" ? "" : (item.complete_date.toString())
                     }</div>
