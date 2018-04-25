@@ -44,12 +44,13 @@ class TodoList extends Component {
         }
     }
 
-    compareCurrentDateDueDate(dueDate) {
+    compareCurrentDateDueDate(dueDate, completed) {
         // if (completeDate != "" && dueDate < completeDate) { 
         //     return  "grey";
         // }
-        var currnetDate = new Date(); 
-        if (dueDate < currnetDate) {
+
+        var currentDate = new Date(); 
+        if (completed == false && dueDate < currentDate) {
             return "red";
         }
     }
@@ -57,7 +58,7 @@ class TodoList extends Component {
     createList() {
         return this.props.todoList.map((item) => { 
             return (
-                <li key={item.id} className="task" className={this.compareCurrentDateDueDate(item.due_date)}> 
+                <li key={item.id} className="task" className={this.compareCurrentDateDueDate(item.due_date, item.completed)}> 
                     <input type="checkbox" defaultChecked={item.completed} onClick={() => this.checkCompleted(item.id, item.completed)} />
                     <div>Name: {item.name}</div>
                     <div>Description: {item.description}</div>
