@@ -1,5 +1,7 @@
 var testDate = new Date();
 var testDueDate = new Date('2018-04-20T10:20:30Z');
+var testDueDate2 = new Date('2018-03-20T10:20:30Z');
+var testCompleteDate = new Date('2018-06-20T10:20:30Z');
 
 const inittialState = [
     {
@@ -15,8 +17,8 @@ const inittialState = [
         id: 2,
         name: "Learn Node.js",
         description: "create a server app",
-        due_date: "20.06.18",
-        complete_date: testDate,
+        due_date: testDueDate2,
+        complete_date: testCompleteDate,
         priority: "normal",
         completed: true
     }
