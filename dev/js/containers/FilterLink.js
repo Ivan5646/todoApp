@@ -2,9 +2,9 @@ import { connect } from 'react-redux'
 import { setVisibilityFilter } from '../actions'
 import Link from '../components/Link'
 
-const mapStateToProps = (state, ownProps) => {
+const mapStateToProps = (state, ownProps) => { // ownprops are passed in Footer.js <FilterLink filter="SHOW_ALL"> etc
     return {
-        active: ownProps.filter === state.visibilityFilter
+        active: ownProps.filter === state.visibilityFilter // ownProps.filter is ownProps.SHOW_ALL ?
     }
 }
 

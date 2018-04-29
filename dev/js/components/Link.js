@@ -1,8 +1,8 @@
 import React, { PropTypes } from 'react'
 
-const Link = ({ active, children, onClick }) => {
+const Link = ({ active, children, onClick }) => { // where are all the args passed?
     if (active) {
-        return <span>{children}</span>
+        return <span>{children}</span> // what are children?
     }
 
   return (
@@ -18,7 +18,7 @@ const Link = ({ active, children, onClick }) => {
 }
 
 Link.propTypes = {
-    active: PropTypes.bool.isRequired,
+    active: PropTypes.bool.isRequired, //  PropTypes defines type and which props are required.
     children: PropTypes.node.isRequired,
     onClick: PropTypes.func.isRequired
 }
