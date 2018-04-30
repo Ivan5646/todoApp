@@ -9,8 +9,8 @@ require('../../scss/style.scss');
 const App = () => (
     <div>
         <AddTodo />
-        {/*<TodoList />*/}
-        <VisibleTodoList />
+        <TodoList />
+        {/*<VisibleTodoList />*/}
         <Footer />
     </div>
 );

@@ -84,9 +84,20 @@ class TodoList extends Component {
     }
 }
 
+const getVisibleTodos = (todos, filter) => { // filter - state.visibilityFilter
+  switch (filter) {
+    case 'SHOW_ALL':
+      return todos
+    case 'SHOW_COMPLETED':
+      return todos.filter(t => t.completed) 
+    case 'SHOW_ACTIVE':
+      return todos.filter(t => !t.completed)
+  }
+}
+
 function mapStateToProps(state){ //takes a piece of state which is part of the Store and sends it to the Component as props
     return {
-        todoList: state.todoList //todoList.items
+        todoList: getVisibleTodos(state.todoList, state.visibilityFilter) // state.visibilityFilter - reducers/visibilityFilter.js
     };
 }
 
