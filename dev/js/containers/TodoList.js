@@ -88,10 +88,12 @@ const getVisibleTodos = (todos, filter) => { // filter - state.visibilityFilter
   switch (filter) {
     case 'SHOW_ALL':
       return todos
-    case 'SHOW_COMPLETED':
-      return todos.filter(t => t.completed) 
-    case 'SHOW_ACTIVE':
-      return todos.filter(t => !t.completed)
+    case 'SHOW_NORMAL':
+      return todos.filter(t => t.priority==="normal") 
+    case 'SHOW_HIGH':
+      return todos.filter(t => t.priority==="high")
+    case 'SHOW_URGENT':
+      return todos.filter(t => t.priority==="urgent")
   }
 }
 
