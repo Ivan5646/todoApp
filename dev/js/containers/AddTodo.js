@@ -36,6 +36,12 @@ class AddTodo extends Component {
             completed: false
             
         });
+        // reset inputs
+        this.nameInput.value = "";
+        this.description.value = "";
+        this.priority.value = "normal";
+        this.due_date.value = this.getDate();
+
         //console.log("props", this.props.todoList[0].due_date); // getting the value of the state example
     }
 
