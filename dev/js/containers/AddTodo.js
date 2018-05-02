@@ -21,8 +21,9 @@ class AddTodo extends Component {
         return convertedDate;
     }
 
-    addItem() {
+    addItem(event) {
         //console.log("addItem", this.nameInput.value);
+        event.preventDefault();
         var date = new Date();
         var due_date_obj = new Date(this.due_date.value);
         this.props.onAddItem1({
@@ -40,7 +41,7 @@ class AddTodo extends Component {
 
     render() {
         return (
-            <form>
+            <form  onSubmit={this.addItem}>
                 <div> 
                     <label>Name</label>
                     <input type="text" placeholder="enter the name of the task..." ref={(input) => {this.nameInput = input}} />
@@ -60,7 +61,7 @@ class AddTodo extends Component {
                     <label>Due Date</label>
                     <input type="datetime-local" placeholder="enter the due date of the task..." defaultValue={this.getDate()} ref={(input) => {this.due_date = input}}/>
                 </div>
-                <button type="button" onClick={this.addItem}>Add Task</button>
+                <button type="submit">Add Task</button>
             </form>
         )
     }
