@@ -74,7 +74,12 @@ class TodoList extends Component {
     }
 
     showEditForm(id, name, description, due_date, complete_date, priority) {
+        // if(this.state.showForm === true) {
+            //
+        // }
+
         if(this.state.showForm && this.state.showId==id) {
+
             return (<EditItem id={id} name={name} description={description} due_date={due_date} complete_date={complete_date} priority={priority} />);
         }
     }
@@ -93,7 +98,7 @@ class TodoList extends Component {
                     }</div>
                     <button onClick={() => this.deleteItem(item.id)} >Delete Task</button>
                     <button onClick={() => this.toogleEditForm(item.id)}>Edit Task</button>
-                    {this.showEditForm(item.id, item.description, item.due_date, item.complete_date, item.priority)}
+                    {this.showEditForm(item.id, item.name, item.description, item.due_date, item.complete_date, item.priority)}
                 </li>
             );
         });
