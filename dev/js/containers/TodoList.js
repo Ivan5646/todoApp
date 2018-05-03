@@ -10,7 +10,8 @@ class TodoList extends Component {
         super(props);
 
         this.state = {
-          showForm: false
+          showForm: false,
+          showId: null
           // checked: this.props.todoList[0].completed
       };
 
@@ -18,6 +19,7 @@ class TodoList extends Component {
         this.toogleEditForm = this.toogleEditForm.bind(this);
         this.checkCompleted = this.checkCompleted.bind(this);
         this.compareCurrentDateDueDate = this.compareCurrentDateDueDate.bind(this);
+        this.showEditForm = this.showEditForm.bind(this);
     }
 
     deleteItem(itemId) {
@@ -29,6 +31,22 @@ class TodoList extends Component {
           showForm: !this.state.showForm,
           showId: itemId
         })
+
+        // if (this.state.showId === null) {
+        //     this.setState({
+        //       showForm: !this.state.showForm,
+        //       showId: itemId
+        //   })
+        // }
+
+        // if (this.state.showId != itemId) {
+        //     console.log("this.state.showId != itemId");
+        // } else {
+        //     this.setState({
+        //       showForm: !this.state.showForm,
+        //       showId: itemId
+        //   })
+        // }
     }
 
     checkCompleted(itemId, itemCompleted) {
@@ -55,6 +73,12 @@ class TodoList extends Component {
         }
     }
 
+    showEditForm(id, name, description, due_date, complete_date, priority) {
+        if(this.state.showForm && this.state.showId==id) {
+            return (<EditItem id={id} name={name} description={description} due_date={due_date} complete_date={complete_date} priority={priority} />);
+        }
+    }
+
     createList() {
         return this.props.todoList.map((item) => { 
             return (
@@ -69,7 +93,7 @@ class TodoList extends Component {
                     }</div>
                     <button onClick={() => this.deleteItem(item.id)} >Delete Task</button>
                     <button onClick={() => this.toogleEditForm(item.id)}>Edit Task</button>
-                    {this.state.showForm && this.state.showId==item.id && <EditItem id={item.id} name={item.name} description={item.description} due_date={item.due_date} complete_date={item.complete_date} priority={item.priority} />}
+                    {this.showEditForm(item.id, item.description, item.due_date, item.complete_date, item.priority)}
                 </li>
             );
         });
