@@ -11,7 +11,8 @@ class EditItem extends Component {
         this.onEditItem = this.onEditItem.bind(this);
     }
 
-    onEditItem() {
+    onEditItem(event) {
+        event.preventDefault();
         this.props.editItem1({
             id: this.props.id, 
             name: this.nameInput.value, 
@@ -24,7 +25,7 @@ class EditItem extends Component {
 
     render() {
         return (
-            <form className="editForm">
+            <form className="editForm" onSubmit={this.onEditItem}>
                 <div> 
                     <label>Name</label>
                     <input type="text" placeholder="enter the name of the task..." defaultValue={this.props.name} ref={(input) => {this.nameInput = input}} />
@@ -48,7 +49,7 @@ class EditItem extends Component {
                     <label>Complete Date</label>
                     <input placeholder="enter the complete date of the task..." defaultValue={this.props.complete_date} ref={(input) => {this.complete_date = input}} />
                 </div>
-                <button type="button" onClick={this.onEditItem}>Done</button>
+                <button type="submit">Done</button>
             </form>
         )
     }
