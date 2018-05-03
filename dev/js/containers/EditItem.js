@@ -43,7 +43,7 @@ class EditItem extends Component {
                 </div>
                 <div> 
                     <label>Due Date</label>
-                    <input placeholder="date..." defaultValue={this.props.due_date} ref={(input) => {this.due_date = input}} />
+                    <input type="datetime-local" placeholder="date..." defaultValue={this.props.due_date} ref={(input) => {this.due_date = input}} />
                 </div>
                 <div> 
                     <label>Complete Date</label>
