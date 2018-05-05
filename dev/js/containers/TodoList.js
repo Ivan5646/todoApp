@@ -10,7 +10,6 @@ class TodoList extends Component {
         super(props);
 
         this.state = {
-          showForm: false,
           showId: null
           // checked: this.props.todoList[0].completed
       };
@@ -27,25 +26,21 @@ class TodoList extends Component {
     }
 
     toogleEditForm(itemId) {
-        if (itemId === this.state.showId) {
-             this.setState({
-               showForm: !this.state.showForm
-           })
-         } else {   
-             this.setState({
-               showForm: true,
-               showId: itemId
-           })
-        }
+        // if (itemId === this.state.showId) { 
+        //     this.setState({showId: null})
+        // } else {   
+        //     this.setState({showId: itemId}) 
+        // }
+        const showId = (itemId === this.state.showId) ? null : itemId;
+        this.setState({showId});
     }
 
     showEditForm(id, name, description, due_date, complete_date, priority) {
-        if(this.state.showForm && this.state.showId==id) {
-
+        if(this.state.showId === id) {
             return (<EditItem id={id} name={name} description={description} due_date={due_date} complete_date={complete_date} priority={priority} />);
         }
     }
-    
+
     checkCompleted(itemId, itemCompleted) {
         this.props.checkCompleted1(itemId);
 
