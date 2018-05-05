@@ -39,6 +39,13 @@ class TodoList extends Component {
         }
     }
 
+    showEditForm(id, name, description, due_date, complete_date, priority) {
+        if(this.state.showForm && this.state.showId==id) {
+
+            return (<EditItem id={id} name={name} description={description} due_date={due_date} complete_date={complete_date} priority={priority} />);
+        }
+    }
+    
     checkCompleted(itemId, itemCompleted) {
         this.props.checkCompleted1(itemId);
 
@@ -60,17 +67,6 @@ class TodoList extends Component {
         var currentDate = new Date(); 
         if (completed == false && dueDate < currentDate) {
             return "red";
-        }
-    }
-
-    showEditForm(id, name, description, due_date, complete_date, priority) {
-        // if(this.state.showForm === true) {
-            //
-        // }
-
-        if(this.state.showForm && this.state.showId==id) {
-
-            return (<EditItem id={id} name={name} description={description} due_date={due_date} complete_date={complete_date} priority={priority} />);
         }
     }
 
