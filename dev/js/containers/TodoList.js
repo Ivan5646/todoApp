@@ -27,26 +27,16 @@ class TodoList extends Component {
     }
 
     toogleEditForm(itemId) {
-        this.setState({
-          showForm: !this.state.showForm,
-          showId: itemId
-        })
-
-        // if (this.state.showId === null) {
-        //     this.setState({
-        //       showForm: !this.state.showForm,
-        //       showId: itemId
-        //   })
-        // }
-
-        // if (this.state.showId != itemId) {
-        //     console.log("this.state.showId != itemId");
-        // } else {
-        //     this.setState({
-        //       showForm: !this.state.showForm,
-        //       showId: itemId
-        //   })
-        // }
+        if (itemId === this.state.showId) {
+             this.setState({
+               showForm: !this.state.showForm
+           })
+         } else {   
+             this.setState({
+               showForm: true,
+               showId: itemId
+           })
+        }
     }
 
     checkCompleted(itemId, itemCompleted) {
