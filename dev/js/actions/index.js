@@ -42,9 +42,10 @@ export const setVisibilityFilter = (filter) => {
   }
 }
 
-// export const toggleTodo = (id) => {
-//   return {
-//     type: 'TOGGLE_TODO',
-//     id
-//   }
-// }
+// save showId for closing edit form
+export const getItem = (id) => { 
+    return { 
+        type: "GET_ITEM", 
+        payload: id
+    }
+}

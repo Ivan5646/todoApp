@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import {deleteItem, checkCompleted, recordDate} from '../actions/index';
+import {deleteItem, checkCompleted, recordDate, getItem} from '../actions/index';
 import EditItem from './EditItem';
 
 class TodoList extends Component {
@@ -11,7 +11,6 @@ class TodoList extends Component {
 
         this.state = {
           showId: null
-          // checked: this.props.todoList[0].completed
       };
 
         this.deleteItem = this.deleteItem.bind(this);
@@ -26,11 +25,12 @@ class TodoList extends Component {
     }
 
     toogleEditForm(itemId) {
-        // if (itemId === this.state.showId) { 
-        //     this.setState({showId: null})
-        // } else {   
-        //     this.setState({showId: itemId}) 
-        // }
+        this.props.getItem1({
+            id: itemId
+        })
+
+        console.log(this.props.todoList);
+
         const showId = (itemId === this.state.showId) ? null : itemId;
         this.setState({showId});
     }
@@ -109,12 +109,12 @@ const getVisibleTodos = (todos, filter) => { // filter - state.visibilityFilter
 
 function mapStateToProps(state){ //takes a piece of state which is part of the Store and sends it to the Component as props
     return {
-        todoList: getVisibleTodos(state.todoList, state.visibilityFilter) // state.visibilityFilter - reducers/visibilityFilter.js
+        todoList: getVisibleTodos(state.todoList, state.visibilityFilter, state.editForm) // state.visibilityFilter - reducers/visibilityFilter.js
     };
 }
 
 function matchDispathToProps(dispatch){
-    return bindActionCreators({deleteItem1: deleteItem, checkCompleted1: checkCompleted, recordDate1: recordDate}, dispatch)
+    return bindActionCreators({deleteItem1: deleteItem, checkCompleted1: checkCompleted, recordDate1: recordDate, getItem1: getItem}, dispatch)
 }
 
 export default connect(mapStateToProps, matchDispathToProps)(TodoList); // this is now a contanier
