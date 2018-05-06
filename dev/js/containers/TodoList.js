@@ -13,7 +13,7 @@ class TodoList extends Component {
         this.toogleEditForm = this.toogleEditForm.bind(this);
         this.checkCompleted = this.checkCompleted.bind(this);
         this.compareCurrentDateDueDate = this.compareCurrentDateDueDate.bind(this);
-        this.showEditForm = this.showEditForm.bind(this);
+        this.timestampToDate = this.timestampToDate.bind(this);
     }
 
     deleteItem(itemId) {
@@ -66,13 +66,12 @@ class TodoList extends Component {
         }
     }
 
-    // renderDate() {
-    //     if (this.props.due_date=="object") {
-
-    //     } else {
-            
-    //     }
-    // }
+    timestampToDate(date) {
+        var date = new Date(date);
+        var convertedDate = date.getFullYear() + "-" + ("0" + (date.getMonth() + 1)).slice(-2) + "-" + ("0" + date.getDate()).slice(-2) + " Time: " + ("0" + (date.getHours())).slice(-2) + ":" + ("0" + (date.getMinutes())).slice(-2) + ":" + "00";
+        //console.log(convertedDate);
+        return convertedDate;
+    }
 
     createList() {
         return this.props.todoList.map((item) => { 
@@ -82,7 +81,7 @@ class TodoList extends Component {
                     <div>Name: {item.name}</div>
                     <div>Description: {item.description}</div>
                     <div>Priority: {item.priority}</div>
-                    <div>Due Date: {item.due_date.toString()}</div>
+                    <div>Due Date: {this.timestampToDate(item.due_date)}</div>
                     <div>Complete Date: {
                         item.complete_date=="" ? "" : (item.complete_date.toString())
                     }</div>
