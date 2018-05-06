@@ -49,6 +49,7 @@ class TodoList extends Component {
         if(!itemCompleted) {        
             // record the complete date and time
             var date = new Date(); 
+            date = +(new Date(date));
             this.props.recordDate1(date, itemId);
         }else {
             this.props.recordDate1("", itemId);
@@ -83,7 +84,7 @@ class TodoList extends Component {
                     <div>Priority: {item.priority}</div>
                     <div>Due Date: {this.timestampToDate(item.due_date)}</div>
                     <div>Complete Date: {
-                        item.complete_date=="" ? "" : (item.complete_date.toString())
+                        item.complete_date=="" ? "" : (this.timestampToDate(item.complete_date))
                     }</div>
                     <button onClick={() => this.deleteItem(item.id)} >Delete Task</button>
                     <button onClick={() => this.toogleEditForm(item.id)}>Edit Task</button>
