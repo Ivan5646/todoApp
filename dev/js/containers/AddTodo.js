@@ -36,6 +36,7 @@ class AddTodo extends Component {
             completed: false
             
         });
+        // debugger;
         // reset inputs
         this.nameInput.value = "";
         this.description.value = "";

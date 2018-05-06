@@ -9,15 +9,18 @@ class EditItem extends Component {
     constructor(props) {
         super(props);
         this.onEditItem = this.onEditItem.bind(this);
+        this.getDate = this.getDate.bind(this);
     }
 
     onEditItem(event) {
         event.preventDefault();
+
+
         this.props.editItem1({
             id: this.props.id, 
             name: this.nameInput.value, 
             description: this.description.value,
-            due_date: this.due_date.value,
+            due_date: new Date(this.due_date.value),
             complete_date: this.complete_date.value,
             priority: this.priority.value
         });
@@ -27,6 +30,13 @@ class EditItem extends Component {
         })
 
         //console.log(this.props.todoList);
+    }
+
+    getDate() {
+        var date = new Date(this.props.due_date);
+        var convertedDate = date.getFullYear() + "-" + ("0" + (date.getMonth() + 1)).slice(-2) + "-" + ("0" + date.getDate()).slice(-2) + "T" + ("0" + (date.getHours())).slice(-2) + ":" + ("0" + (date.getMinutes())).slice(-2) + ":" + "00";
+        //console.log(convertedDate);
+        return convertedDate;
     }
 
     render() {
@@ -49,7 +59,7 @@ class EditItem extends Component {
                 </div>
                 <div> 
                     <label>Due Date</label>
-                    <input type="datetime-local" placeholder="date..." defaultValue={this.props.due_date} ref={(input) => {this.due_date = input}} />
+                    <input type="datetime-local" placeholder="date..." defaultValue={this.getDate()} ref={(input) => {this.due_date = input}} />
                 </div>
                 <div> 
                     <label>Complete Date</label>

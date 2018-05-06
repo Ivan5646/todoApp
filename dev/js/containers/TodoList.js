@@ -9,10 +9,6 @@ class TodoList extends Component {
         constructor(props) {
         super(props);
 
-        this.state = {
-          showId: null
-      };
-
         this.deleteItem = this.deleteItem.bind(this);
         this.toogleEditForm = this.toogleEditForm.bind(this);
         this.checkCompleted = this.checkCompleted.bind(this);
