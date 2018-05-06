@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import TodoList from './TodoList';
-import {editItem, getItem} from '../actions/index'; 
+import {editItem, getEditFormId} from '../actions/index'; 
 
 class EditItem extends Component {
 
@@ -22,7 +22,7 @@ class EditItem extends Component {
             priority: this.priority.value
         });
 
-        this.props.getItem1({
+        this.props.getEditFormId1({
             id: null
         })
 
@@ -69,7 +69,7 @@ function mapStateToProps(state){
 }
 
 function matchDispathToProps(dispatch){
-    return bindActionCreators({editItem1: editItem, getItem1: getItem}, dispatch)
+    return bindActionCreators({editItem1: editItem, getEditFormId1: getEditFormId}, dispatch)
 }
 
 export default connect(mapStateToProps, matchDispathToProps)(EditItem); // this is now a contanier

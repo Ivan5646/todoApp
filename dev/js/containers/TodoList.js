@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import {deleteItem, checkCompleted, recordDate, getItem} from '../actions/index';
+import {deleteItem, checkCompleted, recordDate, getEditFormId} from '../actions/index';
 import EditItem from './EditItem';
 
 class TodoList extends Component {
@@ -26,15 +26,15 @@ class TodoList extends Component {
 
     toogleEditForm(itemId) {        
         if (itemId === this.props.editForm.id) {
-            this.props.getItem1({ // supposed to change redux store
+            this.props.getEditFormId1({ // supposed to change redux store
                 id: null
             })
         } else {
-            this.props.getItem1({
+            this.props.getEditFormId1({
                 id: itemId
             })
         }
-        console.log(this.props.editForm.id);
+        // console.log(this.props.editForm.id);
 
         //const showId = (itemId === this.state.showId) ? null : itemId;
         //this.setState({showId});
@@ -120,7 +120,7 @@ function mapStateToProps(state){ //takes a piece of state which is part of the S
 }
 
 function matchDispathToProps(dispatch){
-    return bindActionCreators({deleteItem1: deleteItem, checkCompleted1: checkCompleted, recordDate1: recordDate, getItem1: getItem}, dispatch)
+    return bindActionCreators({deleteItem1: deleteItem, checkCompleted1: checkCompleted, recordDate1: recordDate, getEditFormId1: getEditFormId}, dispatch)
 }
 
 export default connect(mapStateToProps, matchDispathToProps)(TodoList); // this is now a contanier

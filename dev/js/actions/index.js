@@ -43,9 +43,9 @@ export const setVisibilityFilter = (filter) => {
 }
 
 // save showId for closing edit form
-export const getItem = (id) => { 
+export const getEditFormId = (id) => { 
     return { 
-        type: "GET_ITEM", 
+        type: "GET_EDIT_FORM_ID", 
         payload: id
     }
 }
