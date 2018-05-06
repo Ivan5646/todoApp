@@ -24,19 +24,24 @@ class TodoList extends Component {
         this.props.deleteItem1(itemId);
     }
 
-    toogleEditForm(itemId) {
-        this.props.getItem1({
-            id: itemId
-        })
+    toogleEditForm(itemId) {        
+        if (itemId === this.props.editForm.id) {
+            this.props.getItem1({ // supposed to change redux store
+                id: null
+            })
+        } else {
+            this.props.getItem1({
+                id: itemId
+            })
+        }
+        console.log(this.props.editForm.id);
 
-        console.log(this.props.todoList);
-
-        const showId = (itemId === this.state.showId) ? null : itemId;
-        this.setState({showId});
+        //const showId = (itemId === this.state.showId) ? null : itemId;
+        //this.setState({showId});
     }
 
     showEditForm(id, name, description, due_date, complete_date, priority) {
-        if(this.state.showId === id) {
+        if(this.props.editForm.id === id) {
             return (<EditItem id={id} name={name} description={description} due_date={due_date} complete_date={complete_date} priority={priority} />);
         }
     }
@@ -109,7 +114,8 @@ const getVisibleTodos = (todos, filter) => { // filter - state.visibilityFilter
 
 function mapStateToProps(state){ //takes a piece of state which is part of the Store and sends it to the Component as props
     return {
-        todoList: getVisibleTodos(state.todoList, state.visibilityFilter, state.editForm) // state.visibilityFilter - reducers/visibilityFilter.js
+        todoList: getVisibleTodos(state.todoList, state.visibilityFilter), // state.visibilityFilter - reducers/visibilityFilter.js
+        editForm: state.editForm
     };
 }
 

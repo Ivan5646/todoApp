@@ -1,4 +1,4 @@
-const inittialState = {};
+const inittialState = null;
 
 const editForm = (state = inittialState, action) => {
   switch (action.type) {
