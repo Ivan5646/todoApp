@@ -30,7 +30,7 @@ class AddTodo extends Component {
             id: Date.parse(date), 
             name: this.nameInput.value, 
             description: this.description.value,
-            due_date: due_date_obj,
+            due_date: +(new Date(due_date_obj)), // converts to milliseconds
             complete_date: "", // fix this
             priority: this.priority.value,
             completed: false
