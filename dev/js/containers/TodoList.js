@@ -24,7 +24,7 @@ class TodoList extends Component {
     // }
 
     componentDidMount() {
-        setInterval(() => { 
+        this.overdueTimer = setInterval(() => { 
             // filter overdue tasks
             this.props.todos.filter((item) => {
                 if (item.overdue === true) {
@@ -43,6 +43,10 @@ class TodoList extends Component {
             })
 
         }, 1000);
+    }
+
+    componentWillUnmount() {
+        clearInterval(this.overdueTimer);
     }
 
     deleteItem(itemId) {
