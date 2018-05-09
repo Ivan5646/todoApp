@@ -33,8 +33,8 @@ class AddTodo extends Component {
             due_date: +(new Date(due_date_obj)), // converts to milliseconds
             complete_date: "", // fix this
             priority: this.priority.value,
-            completed: false
-            
+            completed: false,
+            overdue: false
         });
         // debugger;
         // reset inputs

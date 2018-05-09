@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import {deleteItem, checkCompleted, recordDate, getEditFormId} from '../actions/index';
+import {deleteItem, checkCompleted, recordDate, getEditFormId, updateOverdue} from '../actions/index';
 import EditItem from './EditItem';
 
 class TodoList extends Component {
@@ -12,8 +12,37 @@ class TodoList extends Component {
         this.deleteItem = this.deleteItem.bind(this);
         this.toogleEditForm = this.toogleEditForm.bind(this);
         this.checkCompleted = this.checkCompleted.bind(this);
-        this.compareCurrentDateDueDate = this.compareCurrentDateDueDate.bind(this);
+        // this.compareCurrentDateDueDate = this.compareCurrentDateDueDate.bind(this);
         this.timestampToDate = this.timestampToDate.bind(this);
+    }
+
+    // compareCurrentDateDueDate(dueDate, completed) {
+    //     var currentDate = new Date(); 
+    //     if (completed == false && dueDate < currentDate) {
+    //         return "red";
+    //     }
+    // }
+
+    componentDidMount() {
+        setInterval(() => { 
+            // filter overdue tasks
+            this.props.todos.filter((item) => {
+                if (item.overdue === true) {
+                    return true;
+                }
+                return false;
+            }); 
+
+            var today = +new Date;
+            this.props.todos.map((item) => {
+                if (item.due_date < today) {
+                    // update item.overdue in store 
+                    this.props.updateOverdue1(item.id);
+                }
+                return item;
+            })
+
+        }, 1000);
     }
 
     deleteItem(itemId) {
@@ -56,17 +85,6 @@ class TodoList extends Component {
         }
     }
 
-    compareCurrentDateDueDate(dueDate, completed) {
-        // if (completeDate != "" && dueDate < completeDate) { 
-        //     return  "grey";
-        // }
-
-        var currentDate = new Date(); 
-        if (completed == false && dueDate < currentDate) {
-            return "red";
-        }
-    }
-
     timestampToDate(date) {
         var date = new Date(date);
         var convertedDate = date.getFullYear() + "-" + ("0" + (date.getMonth() + 1)).slice(-2) + "-" + ("0" + date.getDate()).slice(-2) + " Time: " + ("0" + (date.getHours())).slice(-2) + ":" + ("0" + (date.getMinutes())).slice(-2) + ":" + "00";
@@ -77,7 +95,7 @@ class TodoList extends Component {
     createList() {
         return this.props.todoList.map((item) => { 
             return (
-                <li key={item.id} className="task" className={this.compareCurrentDateDueDate(item.due_date, item.completed)}> 
+                <li key={item.id} className="task" className={item.overdue ? "red" : ""}> 
                     <input type="checkbox" defaultChecked={item.completed} onClick={() => this.checkCompleted(item.id, item.completed)} />
                     <div>Name: {item.name}</div>
                     <div>Description: {item.description}</div>
@@ -119,12 +137,13 @@ const getVisibleTodos = (todos, filter) => { // filter - state.visibilityFilter
 function mapStateToProps(state){ //takes a piece of state which is part of the Store and sends it to the Component as props
     return {
         todoList: getVisibleTodos(state.todoList, state.visibilityFilter), // state.visibilityFilter - reducers/visibilityFilter.js
-        editForm: state.editForm
+        editForm: state.editForm,
+        todos: state.todoList
     };
 }
 
 function matchDispathToProps(dispatch){
-    return bindActionCreators({deleteItem1: deleteItem, checkCompleted1: checkCompleted, recordDate1: recordDate, getEditFormId1: getEditFormId}, dispatch)
+    return bindActionCreators({deleteItem1: deleteItem, checkCompleted1: checkCompleted, recordDate1: recordDate, getEditFormId1: getEditFormId, updateOverdue1: updateOverdue}, dispatch)
 }
 
 export default connect(mapStateToProps, matchDispathToProps)(TodoList); // this is now a contanier

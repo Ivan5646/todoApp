@@ -49,3 +49,11 @@ export const getEditFormId = (id) => {
         payload: id
     }
 }
+
+// mark overdue tasks
+export const updateOverdue = (id) => { 
+    return { 
+        type: "UPDATE_OVERDUE", 
+        payload: id
+    }
+}

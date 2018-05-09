@@ -1,11 +1,4 @@
-var testDate = new Date();
-var testDueDate = new Date('2018-08-20T10:20:30Z');
-var testDueDate2 = new Date('2018-03-20T10:20:30Z');
-var testCompleteDate = new Date('2018-06-20T10:20:30Z');
-
-const inittialState = [
-
-];
+const inittialState = [];
 
 export default function(state=inittialState, action) {
     switch(action.type) {
@@ -42,7 +35,13 @@ export default function(state=inittialState, action) {
             }
             return obj;
         });
-
+        case "UPDATE_OVERDUE": 
+        return state.map((obj) => {
+            if (obj.id == action.payload) {
+                obj.overdue = true
+            }
+            return obj;
+        }); 
     }
     return state;
 }
