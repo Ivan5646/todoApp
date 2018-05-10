@@ -9,16 +9,20 @@ class AddTodo extends Component {
     constructor(props) {
         super(props);
 
-        // state = {
-        //     date: new Date(),
-        // }
+        this.state = {
+            date: new Date()
+        }
 
         this.addItem = this.addItem.bind(this);
         this.logOut = this.logOut.bind(this);
         this.getDate = this.getDate.bind(this);
+        this.pickDate = this.pickDate.bind(this);
     }
 
-    // onChange = date => this.setState({ date })
+    
+    pickDate(date) {
+        this.setState({ date })
+    }
 
     getDate() {
         var date = new Date();
@@ -74,6 +78,8 @@ class AddTodo extends Component {
                 <div> 
                     <label>Due Date</label>
                     <Calendar
+                        onChange={this.pickDate}
+                        value={this.state.date}
                     />
                 </div>
                 <button type="submit">Add Task</button>
