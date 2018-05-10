@@ -11,7 +11,8 @@ class AddTodo extends Component {
         super(props);
 
         this.state = {
-            date: new Date()
+            date: new Date(),
+            dueDate: ""
         }
 
         this.addItem = this.addItem.bind(this);
@@ -29,7 +30,7 @@ class AddTodo extends Component {
     }
 
     pickDate(event) {
-        console.log(event._d);
+        console.log(event.unix());
     }
 
     addItem(event) {
