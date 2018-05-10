@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
+import Calendar from 'react-calendar';
 import {onAddItem} from '../actions/index';
 
 class AddTodo extends Component {
@@ -8,10 +9,16 @@ class AddTodo extends Component {
     constructor(props) {
         super(props);
 
+        // state = {
+        //     date: new Date(),
+        // }
+
         this.addItem = this.addItem.bind(this);
         this.logOut = this.logOut.bind(this);
         this.getDate = this.getDate.bind(this);
     }
+
+    // onChange = date => this.setState({ date })
 
     getDate() {
         var date = new Date();
@@ -66,7 +73,8 @@ class AddTodo extends Component {
                 </div>
                 <div> 
                     <label>Due Date</label>
-                    <input type="datetime-local" placeholder="enter the due date of the task..." defaultValue={this.getDate()} ref={(input) => {this.due_date = input}}/>
+                    <Calendar
+                    />
                 </div>
                 <button type="submit">Add Task</button>
             </form>
