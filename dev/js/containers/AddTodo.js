@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import Calendar from 'react-calendar';
+// require('react-datetime');
+import Datetime from 'react-datetime';
 import {onAddItem} from '../actions/index';
 
 class AddTodo extends Component {
@@ -19,11 +20,6 @@ class AddTodo extends Component {
         this.pickDate = this.pickDate.bind(this);
     }
 
-    
-    pickDate(date) {
-        this.setState({ date })
-    }
-
     getDate() {
         var date = new Date();
         date.setDate(date.getDate() + 1);
@@ -32,27 +28,31 @@ class AddTodo extends Component {
         return convertedDate;
     }
 
+    pickDate(event) {
+        console.log(event._d);
+    }
+
     addItem(event) {
         //console.log("addItem", this.nameInput.value);
         event.preventDefault();
         var date = new Date();
-        var due_date_obj = new Date(this.due_date.value);
+        // var due_date_obj = new Date(this.due_date.value);
         this.props.onAddItem1({
             id: Date.parse(date), 
             name: this.nameInput.value, 
             description: this.description.value,
-            due_date: +(new Date(due_date_obj)), // converts to milliseconds
+            due_date: +(new Date(this.due_date.value)),
             complete_date: "", // fix this
             priority: this.priority.value,
             completed: false,
             overdue: false
         });
-        // debugger;
+        //debugger;
         // reset inputs
         this.nameInput.value = "";
         this.description.value = "";
         this.priority.value = "normal";
-        this.due_date.value = this.getDate();
+        this.due_date.value = "";
 
         //console.log("props", this.props.todoList[0].due_date); // getting the value of the state example
     }
@@ -75,12 +75,9 @@ class AddTodo extends Component {
                         <option value="urgent">urgent</option>
                     </select>
                 </div>
-                <div> 
+                <div className="due-date"> 
                     <label>Due Date</label>
-                    <Calendar
-                        onChange={this.pickDate}
-                        value={this.state.date}
-                    />
+                    <Datetime onChange={this.pickDate} />
                 </div>
                 <button type="submit">Add Task</button>
             </form>
