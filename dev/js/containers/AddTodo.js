@@ -30,7 +30,7 @@ class AddTodo extends Component {
     }
 
     pickDate(event) {
-        console.log(event.unix());
+        this.setState({dueDate: event.get()});
     }
 
     addItem(event) {
@@ -42,7 +42,7 @@ class AddTodo extends Component {
             id: Date.parse(date), 
             name: this.nameInput.value, 
             description: this.description.value,
-            due_date: +(new Date(this.due_date.value)),
+            due_date: this.state.dueDate,
             complete_date: "", // fix this
             priority: this.priority.value,
             completed: false,
