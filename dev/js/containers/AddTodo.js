@@ -12,7 +12,8 @@ class AddTodo extends Component {
 
         this.state = {
             date: new Date(),
-            dueDate: ""
+            dueDate: "",
+            selectedValue: ""
         }
 
         this.addItem = this.addItem.bind(this);
@@ -50,10 +51,12 @@ class AddTodo extends Component {
         });
         //debugger;
         // reset inputs
+        var myDate = new Date();
         this.nameInput.value = "";
         this.description.value = "";
         this.priority.value = "normal";
-        this.due_date.value = "";
+        //this.due_date.value = myDate;
+        this.setState({selectedValue: ""});
 
         //console.log("props", this.props.todoList[0].due_date); // getting the value of the state example
     }
@@ -78,7 +81,11 @@ class AddTodo extends Component {
                 </div>
                 <div className="due-date"> 
                     <label>Due Date</label>
-                    <Datetime onChange={this.pickDate} />
+                    <Datetime 
+                        onChange={this.pickDate} 
+                        defaultValue={this.state.selectedValue}
+                        closeOnSelect
+                    />
                 </div>
                 <button type="submit">Add Task</button>
             </form>

@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
+import Datetime from 'react-datetime';
 import TodoList from './TodoList';
 import {editItem, getEditFormId} from '../actions/index'; 
 
@@ -8,19 +9,28 @@ class EditItem extends Component {
 
     constructor(props) {
         super(props);
+
+        this.state = {
+            dueDate: "",
+            selectedValue: ""
+        }
+
         this.onEditItem = this.onEditItem.bind(this);
         this.getDate = this.getDate.bind(this);
+        this.pickDate = this.pickDate.bind(this);
+    }
+
+    pickDate(event) {
+        this.setState({dueDate: event.get()});
     }
 
     onEditItem(event) {
         event.preventDefault();
-
-
         this.props.editItem1({
             id: this.props.id, 
             name: this.nameInput.value, 
             description: this.description.value,
-            due_date: new Date(this.due_date.value),
+            due_date: this.state.dueDate,
             complete_date: this.complete_date.value,
             priority: this.priority.value
         });
@@ -59,7 +69,11 @@ class EditItem extends Component {
                 </div>
                 <div> 
                     <label>Due Date</label>
-                    <input type="datetime-local" placeholder="date..." defaultValue={this.getDate()} ref={(input) => {this.due_date = input}} />
+                    <Datetime 
+                        onChange={this.pickDate} 
+                        defaultValue={this.state.selectedValue}
+                        closeOnSelect
+                    />
                 </div>
                 <div> 
                     <label>Complete Date</label>
