@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-// require('react-datetime');
 import Datetime from 'react-datetime';
 import {onAddItem} from '../actions/index';
 
@@ -43,7 +42,7 @@ class AddTodo extends Component {
             id: Date.parse(date), 
             name: this.nameInput.value, 
             description: this.description.value,
-            due_date: this.state.dueDate,
+            due_date: (this.state.dueDate ? this.state.dueDate : "" ),
             complete_date: "", // fix this
             priority: this.priority.value,
             completed: false,

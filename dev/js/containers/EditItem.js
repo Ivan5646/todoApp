@@ -31,7 +31,7 @@ class EditItem extends Component {
             name: this.nameInput.value, 
             description: this.description.value,
             due_date: this.state.dueDate,
-            complete_date: this.complete_date.value,
+            complete_date: this.props.complete_date,
             priority: this.priority.value
         });
 
@@ -74,10 +74,6 @@ class EditItem extends Component {
                         defaultValue={this.state.selectedValue}
                         closeOnSelect
                     />
-                </div>
-                <div> 
-                    <label>Complete Date</label>
-                    <input placeholder="enter the complete date of the task..." defaultValue={this.props.complete_date} ref={(input) => {this.complete_date = input}} />
                 </div>
                 <button type="submit">Done</button>
             </form>

@@ -26,7 +26,7 @@ class TodoList extends Component {
     componentDidMount() {
         this.overdueTimer = setInterval(() => { 
             this.props.todos
-                .filter(item => !item.overdue && (item.due_date < Date.now())) // filter overdue tasks           
+                .filter(item => !item.overdue && typeof(item.due_date)==="object" && (item.due_date < Date.now())) // filter overdue tasks           
                 .forEach(item => this.props.updateOverdue1(item.id)) // update overdue in store
         }, 1000);
                 //debugger;
@@ -91,7 +91,7 @@ class TodoList extends Component {
                     <div>Name: {item.name}</div>
                     <div>Description: {item.description}</div>
                     <div>Priority: {item.priority}</div>
-                    <div>Due Date: {this.timestampToDate(item.due_date)}</div>
+                    <div>Due Date: {item.due_date ? this.timestampToDate(item.due_date) : ""}</div>
                     <div>Complete Date: {
                         item.complete_date=="" ? "" : (this.timestampToDate(item.complete_date))
                     }</div>

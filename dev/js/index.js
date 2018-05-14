@@ -22,6 +22,6 @@ store.subscribe(() => {
     saveState(store.getState());
 });
 
-// store.subscribe(() => {
-//      console.log("subscribe", store.getState());
-// })
+store.subscribe(() => {
+     console.log("subscribe", store.getState());
+})
