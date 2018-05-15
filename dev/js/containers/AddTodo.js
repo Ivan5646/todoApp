@@ -12,7 +12,7 @@ class AddTodo extends Component {
         this.state = {
             date: new Date(),
             dueDate: "",
-            selectedValue: " "
+            blankDate: " "
         }
 
         this.addItem = this.addItem.bind(this);
@@ -49,14 +49,6 @@ class AddTodo extends Component {
             completed: false,
             overdue: false
         });
-        //debugger;
-        // reset inputs
-        // var myDate = new Date();
-        // this.nameInput.value = "";
-        // this.description.value = "";
-        // this.priority.value = "normal";
-        // //this.due_date.value = myDate;
-        // this.setState({selectedValue: ""});
 
         this.addTodoForm.reset();
     }
@@ -83,7 +75,7 @@ class AddTodo extends Component {
                     <label>Due Date</label>
                     <Datetime 
                         onChange={this.pickDate} 
-                        value={this.state.selectedValue}
+                        value={this.state.blankDate}
                         closeOnSelect
                     />
                 </div>

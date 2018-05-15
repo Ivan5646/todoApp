@@ -14,6 +14,7 @@ class TodoList extends Component {
         this.checkCompleted = this.checkCompleted.bind(this);
         // this.compareCurrentDateDueDate = this.compareCurrentDateDueDate.bind(this);
         this.timestampToDate = this.timestampToDate.bind(this);
+        this.markTodo = this.markTodo.bind(this);
     }
 
     // compareCurrentDateDueDate(dueDate, completed) {
@@ -76,6 +77,16 @@ class TodoList extends Component {
         }
     }
 
+    markTodo(overdue, completed) {
+        var style;
+        if (overdue===true) {
+            style = "red";
+        } else if (completed != "") {
+            style = "grey";
+        }
+        return style;
+    }
+
     timestampToDate(date) {
         var date = new Date(date);
         var convertedDate = date.getFullYear() + "-" + ("0" + (date.getMonth() + 1)).slice(-2) + "-" + ("0" + date.getDate()).slice(-2) + " Time: " + ("0" + (date.getHours())).slice(-2) + ":" + ("0" + (date.getMinutes())).slice(-2) + ":" + "00";
@@ -86,7 +97,7 @@ class TodoList extends Component {
     createList() {
         return this.props.todoList.map((item) => { 
             return (
-                <li key={item.id} className="task" className={item.overdue ? "red" : ""}> 
+                <li key={item.id} className="task" className={this.markTodo(item.overdue, item.complete_date)}> 
                     <input type="checkbox" defaultChecked={item.completed} onClick={() => this.checkCompleted(item.id, item.completed)} />
                     <div>Name: {item.name}</div>
                     <div>Description: {item.description}</div>
