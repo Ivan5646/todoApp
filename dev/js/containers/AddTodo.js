@@ -12,7 +12,7 @@ class AddTodo extends Component {
         this.state = {
             date: new Date(),
             dueDate: "",
-            selectedValue: ""
+            selectedValue: " "
         }
 
         this.addItem = this.addItem.bind(this);
@@ -30,7 +30,8 @@ class AddTodo extends Component {
     }
 
     pickDate(event) {
-        this.setState({dueDate: event.get()});
+        console.log(event); 
+        this.setState({dueDate: event.get()}); // event.get() gets the milliseconds
     }
 
     addItem(event) {
@@ -50,19 +51,19 @@ class AddTodo extends Component {
         });
         //debugger;
         // reset inputs
-        var myDate = new Date();
-        this.nameInput.value = "";
-        this.description.value = "";
-        this.priority.value = "normal";
-        //this.due_date.value = myDate;
-        this.setState({selectedValue: ""});
+        // var myDate = new Date();
+        // this.nameInput.value = "";
+        // this.description.value = "";
+        // this.priority.value = "normal";
+        // //this.due_date.value = myDate;
+        // this.setState({selectedValue: ""});
 
-        //console.log("props", this.props.todoList[0].due_date); // getting the value of the state example
+        this.addTodoForm.reset();
     }
 
     render() {
         return (
-            <form  onSubmit={this.addItem}>
+            <form onSubmit={this.addItem} ref={(el) => this.addTodoForm = el}>
                 <div> 
                     <label>Name</label>
                     <input type="text" placeholder="enter the name of the task..." ref={(input) => {this.nameInput = input}} />
@@ -82,7 +83,7 @@ class AddTodo extends Component {
                     <label>Due Date</label>
                     <Datetime 
                         onChange={this.pickDate} 
-                        defaultValue={this.state.selectedValue}
+                        value={this.state.selectedValue}
                         closeOnSelect
                     />
                 </div>
