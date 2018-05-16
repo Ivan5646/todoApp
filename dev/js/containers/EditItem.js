@@ -11,13 +11,14 @@ class EditItem extends Component {
         super(props);
 
         this.state = {
-            dueDate: "",
+            dueDate: this.props.due_date,
             selectedValue: ""
         }
 
         this.onEditItem = this.onEditItem.bind(this);
         this.getDate = this.getDate.bind(this);
         this.pickDate = this.pickDate.bind(this);
+        this.toDate = this.toDate.bind(this);
     }
 
     pickDate(event) {
@@ -49,6 +50,11 @@ class EditItem extends Component {
         return convertedDate;
     }
 
+    toDate(milliseconds) {
+        var date = new Date(milliseconds);
+        return date;
+    }
+
     render() {
         return (
             <form className="editForm" onSubmit={this.onEditItem}>
@@ -71,7 +77,7 @@ class EditItem extends Component {
                     <label>Due Date</label>
                     <Datetime 
                         onChange={this.pickDate} 
-                        defaultValue={this.state.selectedValue}
+                        defaultValue={this.toDate(this.props.due_date)}
                         closeOnSelect
                     />
                 </div>
