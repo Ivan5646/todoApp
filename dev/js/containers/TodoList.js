@@ -30,7 +30,10 @@ class TodoList extends Component {
                 .filter(item => !item.overdue && typeof(item.due_date)==="object" && (item.due_date < Date.now())) // filter overdue tasks           
                 .forEach(item => this.props.updateOverdue1(item.id)) // update overdue in store
         }, 1000);
-                //debugger;
+       
+        // this.completedTimer = setInterval(() => { 
+        //     this.props.todos.filter(item => item.completed)
+        // }, 1000)
     }
 
     componentWillUnmount() {
@@ -81,9 +84,10 @@ class TodoList extends Component {
         var style;
         if (overdue===true) {
             style = "red";
-        } else if (completed != "") {
-            style = "grey";
-        }
+        } 
+        // else if (completed != "") {
+        //     style = "grey";
+        // }
         return style;
     }
 
