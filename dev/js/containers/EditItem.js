@@ -22,7 +22,12 @@ class EditItem extends Component {
     }
 
     pickDate(event) {
-        this.setState({dueDate: event.get()});
+        try {
+            this.setState({dueDate: event.get()});
+        }
+        catch(err) {
+            this.setState({dueDate: " "});
+        }        
     }
 
     onEditItem(event) {
@@ -77,7 +82,7 @@ class EditItem extends Component {
                     <label>Due Date</label>
                     <Datetime 
                         onChange={this.pickDate} 
-                        defaultValue={this.toDate(this.props.due_date)}
+                        defaultValue={(this.props.due_date.length>1 || typeof(this.props.due_date)==="object") ? this.toDate(this.props.due_date) : " "  }
                         closeOnSelect
                     />
                 </div>
