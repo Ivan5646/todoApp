@@ -102,7 +102,7 @@ class TodoList extends Component {
                     <div>Name: {item.name}</div>
                     <div>Description: {item.description}</div>
                     <div>Priority: {item.priority}</div>
-                    <div>Due Date: {item.due_date ? this.timestampToDate(item.due_date) : ""}</div>
+                    <div>Due Date: {(item.due_date.length>1 || typeof(item.due_date)==="object") ? this.timestampToDate(item.due_date) : ""}</div>
                     <div>Complete Date: {
                         item.complete_date=="" ? "" : (this.timestampToDate(item.complete_date))
                     }</div>
