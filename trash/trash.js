@@ -1,3 +1,8 @@
+                        value={this.state.dueDate}
+                        onChange={(data) => this.setState({dueDate: Datetime.moment(data).format("DD/MM/YY hh:mm  A")})}
+
+
+
 1527613200
 1527613200 event
 1527613200  due_date

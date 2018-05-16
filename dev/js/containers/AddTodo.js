@@ -12,13 +12,13 @@ class AddTodo extends Component {
         this.state = {
             date: new Date(),
             dueDate: "",
-            blankDate: " "
+            blankDate: " ",
+            dateShow: ""
         }
 
         this.addItem = this.addItem.bind(this);
-        this.logOut = this.logOut.bind(this);
         this.getDate = this.getDate.bind(this);
-        this.pickDate = this.pickDate.bind(this);
+        //this.pickDate = this.pickDate.bind(this);
     }
 
     getDate() {
@@ -29,10 +29,11 @@ class AddTodo extends Component {
         return convertedDate;
     }
 
-    pickDate(event) {
-        console.log(event); 
-        this.setState({dueDate: event.get()}); // event.get() gets the milliseconds
-    }
+    // pickDate(event) {
+    //     //console.log(event); 
+    //     this.setState({dueDate: event.get()}); // event.get() gets the milliseconds
+    //     this.setState({dateShow: this.state.dueDate});
+    // }
 
     addItem(event) {
         //console.log("addItem", this.nameInput.value);
@@ -51,6 +52,7 @@ class AddTodo extends Component {
         });
 
         this.addTodoForm.reset();
+        this.setState({dueDate: " "});
     }
 
     render() {
@@ -74,18 +76,14 @@ class AddTodo extends Component {
                 <div className="due-date"> 
                     <label>Due Date</label>
                     <Datetime 
-                        onChange={this.pickDate} 
-                        value={this.state.blankDate}
+                        value={this.state.dueDate}
+                        onChange={(event) => this.setState({dueDate: event.get()})}
                         closeOnSelect
                     />
                 </div>
                 <button type="submit">Add Task</button>
             </form>
         )
-    }
-
-    logOut() {
-        console.log(this.state.name);
     }
 }
 
