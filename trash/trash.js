@@ -1,3 +1,62 @@
+//redux store state has form of:
+http://joxi.ru/4Akq6obtyyl8Km
+{todoList: Array(3), visibilityFilter: "SHOW_ALL", editForm: {…}}
+editForm
+:
+id
+:
+null
+__proto__
+:
+Object
+todoList
+:
+Array(3)
+0
+:
+complete_date
+:
+""
+description
+:
+"lllllmm"
+due_date
+:
+" "
+id
+:
+1526510908000
+name
+:
+"oooooooooooo"
+priority
+:
+"high"
+__proto__
+:
+Object
+1
+:
+{id: 1526511552000, name: "xzcv", description: "", due_date: "2018-05-29T17:00:00.000Z", complete_date: 1526511712093, …}
+2
+:
+{id: 1528716547000, name: "ffdb", description: "fdb", due_date: Moment, complete_date: "", …}
+length
+:
+3
+__proto__
+:
+Array(0)
+visibilityFilter
+:
+"SHOW_ALL"
+__proto__
+:
+Object
+
+
+
+
                         value={this.state.dueDate}
                         onChange={(data) => this.setState({dueDate: Datetime.moment(data).format("DD/MM/YY hh:mm  A")})}
 
